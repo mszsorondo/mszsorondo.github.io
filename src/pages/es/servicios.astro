@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import Testimonial from '../../components/Testimonial.astro';
+import FAQ from '../../components/FAQ.astro';
+import { getCollection } from 'astro:content';
+import { t } from '../../i18n/utils';
+
+const lang = 'es' as const;
+const tr = t(lang);
+
+const services = (await getCollection('services', (s) => s.id.startsWith('es/')))
+  .sort((a, b) => a.data.order - b.data.order);
+const testimonials = await getCollection('testimonials', (t) => t.id.startsWith('es/'));
+
+const faqItems = [
+  { q: '¿Qué tipo de empresas tomás?', a: 'Startups, scale-ups y empresas medianas donde alguien es dueño del problema y puede decidir rápido.' },
+  { q: '¿Trabajás con equipos remotos?', a: 'Sí, la mayoría de mis clientes están fuera de Argentina. Funciono asincrónicamente con sincronías agendadas.' },
+  { q: '¿Qué necesito para la primera clase?', a: 'Nada más que una pregunta concreta. En la llamada intro definimos el alcance y el material necesario.' },
+  { q: '¿Hacés capacitaciones en empresa?', a: 'Sí, adapto programas a stacks internos y nivel del equipo. Duración típica 1-3 días presenciales o spread en sesiones semanales.' },
+  { q: '¿Cómo facturás?', a: 'Invoice USD para clientes fuera de AR, factura local en Argentina. Los mandatos de consultoría 1:1 van bajo mi nombre personal.' },
+];
+---
+<BaseLayout title="Trabajemos juntos — Marco Sánchez Sorondo" description={tr('services.pageLead')}>
+  <section class="max-w-container mx-auto px-4 py-16">
+    <SectionTitle eyebrow="Servicios" title={tr('services.pageTitle')} subtitle={tr('services.pageLead')} />
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map(s => (
+        <ServiceCard
+          title={s.data.title}
+          audience={s.data.audience}
+          includes={s.data.includes}
+          price={s.data.price}
+          calendlyUrl={s.data.calendlyUrl}
+          ctaLabel={tr('cta.bookCall')}
+          quoteLabel={tr('cta.quote')}
+        />
+      ))}
+      {services.length === 0 && <p class="text-ink-mute col-span-full">Pronto.</p>}
+    </div>
+  </section>
+
+  {testimonials.length > 0 && (
+    <section class="max-w-container mx-auto px-4 py-16 border-t border-line">
+      <SectionTitle title={tr('services.testimonialsTitle')} />
+      <div class="grid md:grid-cols-2 gap-6">
+        {testimonials.slice(0, 4).map(tst => <Testimonial {...tst.data} />)}
+      </div>
+    </section>
+  )}
+
+  <FAQ items={faqItems} title={tr('services.faqTitle')} />
+</BaseLayout>
