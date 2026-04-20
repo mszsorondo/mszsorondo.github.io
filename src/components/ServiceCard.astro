@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  audience: string;
+  includes: string[];
+  price?: string | null;
+  calendlyUrl: string;
+  ctaLabel: string;
+  quoteLabel: string;
+}
+const { title, audience, includes, price, calendlyUrl, ctaLabel, quoteLabel } = Astro.props;
+---
+<article class="border border-line p-6 flex flex-col">
+  <h3 class="font-display text-xl">{title}</h3>
+  <p class="mt-2 text-sm uppercase tracking-widest text-ink-mute">{audience}</p>
+  <ul class="mt-4 space-y-1 text-sm text-ink-soft flex-1">
+    {includes.map(i => <li>· {i}</li>)}
+  </ul>
+  <div class="mt-6 flex items-center justify-between">
+    <span class="font-display text-lg">{price ?? quoteLabel}</span>
+    <a href={calendlyUrl} target="_blank" rel="noopener" class="text-xs uppercase tracking-widest border border-ink px-4 py-2 hover:bg-ink hover:text-paper">
+      {ctaLabel}
+    </a>
+  </div>
+</article>
