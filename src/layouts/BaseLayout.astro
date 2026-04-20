@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+import { getLangFromUrl, getAltUrl } from '../i18n/utils';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+const {
+  title,
+  description = 'Marco Sánchez Sorondo — Investigación, construcción y enseñanza en IA.',
+  ogImage = '/og-default.png',
+} = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const altLang: 'es' | 'en' = lang === 'es' ? 'en' : 'es';
+const altUrl = getAltUrl(Astro.url, altLang);
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+---
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={lang} href={canonical} />
+    <link rel="alternate" hreflang={altLang} href={new URL(altUrl, Astro.site).toString()} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/es/', Astro.site).toString()} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="alternate" type="application/rss+xml" title="Blog ES" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Blog EN" href="/en/rss.xml" />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
