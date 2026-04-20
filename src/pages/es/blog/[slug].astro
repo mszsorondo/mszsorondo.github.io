@@ -1,0 +1,19 @@
+---
+import BlogPostLayout from '../../../layouts/BlogPostLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', (p) => p.id.startsWith('es/') && !p.data.draft);
+  return posts.map(p => ({
+    params: { slug: p.id.replace(/^es\//, '') },
+    props: { post: p },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const readingMinutes = Math.max(1, Math.round((post.body ?? '').split(/\s+/).length / 200));
+---
+<BlogPostLayout frontmatter={post.data} readingMinutes={readingMinutes}>
+  <Content />
+</BlogPostLayout>

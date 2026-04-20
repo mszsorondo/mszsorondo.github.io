@@ -1,0 +1,35 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import Newsletter from '../components/Newsletter.astro';
+import '../styles/prose.css';
+import { getLangFromUrl, t } from '../i18n/utils';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    pubDate: Date;
+    category: string;
+  };
+  readingMinutes: number;
+}
+const { frontmatter, readingMinutes } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const tr = t(lang);
+const fmt = new Intl.DateTimeFormat(lang === 'es' ? 'es-AR' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <article class="max-w-prose mx-auto px-4 py-16">
+    <header class="mb-10">
+      <p class="text-xs uppercase tracking-[0.2em] text-ink-mute">{frontmatter.category} · {readingMinutes} {tr('blog.readingTime')} · <time datetime={frontmatter.pubDate.toISOString()}>{fmt.format(frontmatter.pubDate)}</time></p>
+      <h1 class="font-display mt-3">{frontmatter.title}</h1>
+      <p class="mt-4 text-lg text-ink-soft">{frontmatter.description}</p>
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+  <Newsletter />
+  <CTABanner />
+</BaseLayout>
