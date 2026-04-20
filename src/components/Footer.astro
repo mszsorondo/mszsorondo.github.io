@@ -1,6 +1,39 @@
 ---
-// Stub — replaced by Task 9
+import { getLangFromUrl, t, route, localizedPath } from '../i18n/utils';
+import RingMark from './RingMark.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const tr = t(lang);
+const year = new Date().getFullYear();
 ---
 <footer class="mt-24 border-t border-line">
-  <div class="max-w-container mx-auto px-4 py-6 text-xs">© Marco Sánchez Sorondo</div>
+  <div class="max-w-container mx-auto px-4 py-12 grid gap-8 md:grid-cols-3">
+    <div>
+      <a href={localizedPath(lang, '')} class="flex items-center gap-2 font-semibold">
+        <span>MSS</span>
+        <RingMark size={16} />
+      </a>
+      <p class="mt-3 text-sm text-ink-mute">Marco Sánchez Sorondo · Buenos Aires, Argentina</p>
+    </div>
+
+    <nav class="text-sm space-y-2">
+      <a class="block hover:underline" href={route(lang, 'about')}>{tr('nav.about')}</a>
+      <a class="block hover:underline" href={route(lang, 'projects')}>{tr('nav.projects')}</a>
+      <a class="block hover:underline" href={route(lang, 'services')}>{tr('nav.services')}</a>
+      <a class="block hover:underline" href={route(lang, 'blog')}>{tr('nav.blog')}</a>
+    </nav>
+
+    <div class="text-sm space-y-2">
+      <a class="block hover:underline" href="https://linkedin.com/in/marco-sanchez-sorondo" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="block hover:underline" href="https://github.com/mszsorondo" target="_blank" rel="noopener">GitHub</a>
+      <a class="block hover:underline" href="mailto:msorondo@live.com.ar">msorondo@live.com.ar</a>
+      <a class="block hover:underline" href={lang === 'es' ? '/rss.xml' : '/en/rss.xml'}>RSS</a>
+    </div>
+  </div>
+  <div class="border-t border-line">
+    <div class="max-w-container mx-auto px-4 py-4 text-xs text-ink-mute flex justify-between">
+      <span>© {year} Marco Sánchez Sorondo. {tr('footer.rights')}</span>
+      <span>{lang.toUpperCase()}</span>
+    </div>
+  </div>
 </footer>
