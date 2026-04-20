@@ -1,5 +1,5 @@
 ---
-role: "Researcher & Lecturer en IA Generativa"
+role: "Researcher & Lecturer in Generative AI"
 org: "Universidad Austral"
 startDate: 2025-08-01
 endDate: null
