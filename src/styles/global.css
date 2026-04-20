@@ -1,1 +1,82 @@
 @import "tailwindcss";
+
+@import '@fontsource/playfair-display/500.css';
+@import '@fontsource/playfair-display/600.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/source-serif-4/400.css';
+@import '@fontsource/source-serif-4/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+
+@theme {
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #3a3a3a;
+  --color-ink-mute: #7a7a7a;
+  --color-paper: #ffffff;
+  --color-paper-warm: #faf9f6;
+  --color-line: #e5e5e5;
+  --color-accent: #0a0a0a;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-prose: "Source Serif 4", Georgia, serif;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+}
+
+:root {
+  --ink: #0a0a0a;
+  --ink-soft: #3a3a3a;
+  --ink-mute: #7a7a7a;
+  --paper: #ffffff;
+  --paper-warm: #faf9f6;
+  --line: #e5e5e5;
+  --accent: #0a0a0a;
+  --focus: #2563eb;
+
+  --font-display-var: "Playfair Display", Georgia, serif;
+  --font-body-var: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-prose-var: "Source Serif 4", Georgia, serif;
+  --font-mono-var: "JetBrains Mono", Menlo, monospace;
+
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
+  --s-5: 24px; --s-6: 32px; --s-7: 40px; --s-8: 56px;
+  --s-9: 64px; --s-10: 80px; --s-11: 96px; --s-12: 128px;
+
+  --container: 72rem;
+  --prose: 40rem;
+}
+
+@utility max-w-container {
+  max-width: var(--container);
+}
+
+@utility max-w-prose {
+  max-width: var(--prose);
+}
+
+html {
+  font-family: var(--font-body-var);
+  color: var(--ink);
+  background: var(--paper);
+}
+body { margin: 0; line-height: 1.6; }
+*:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display-var);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin: 0;
+}
+h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+h3 { font-size: 1.5rem; }
+
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
