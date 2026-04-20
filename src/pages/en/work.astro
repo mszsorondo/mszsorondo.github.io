@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import TimelineEntry from '../../components/TimelineEntry.astro';
+import { getCollection } from 'astro:content';
+
+const entries = (await getCollection('work', (w) => w.id.startsWith('en/')))
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
+---
+<BaseLayout title="Work — Marco Sánchez Sorondo">
+  <section class="max-w-container mx-auto px-4 py-16">
+    <SectionTitle eyebrow="Experience" title="Work" subtitle="Research, applied, and teaching in reverse chronological order." />
+    <div class="max-w-prose">
+      {entries.map(e => (
+        <TimelineEntry {...e.data} />
+      ))}
+      {entries.length === 0 && <p class="text-ink-mute">Coming soon.</p>}
+    </div>
+  </section>
+</BaseLayout>

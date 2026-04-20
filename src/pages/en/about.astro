@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import PublicationCard from '../../components/PublicationCard.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/prose.css';
+
+const pubs = (await getCollection('publications', (p) => p.id.startsWith('en/')))
+  .sort((a, b) => b.data.year - a.data.year);
+---
+<BaseLayout title="About — Marco Sánchez Sorondo">
+  <section class="max-w-prose mx-auto px-4 py-16">
+    <img src="/placeholder-photo.svg" alt="Marco Sánchez Sorondo" class="w-48 h-48 rounded-full object-cover border border-line mb-8" />
+    <h1 class="font-display">About</h1>
+    <div class="prose mt-6">
+      <p>I'm a computer scientist trained at UBA (equivalent to a combined B.Sc. + M.Sc.), focused on applied AI. I research, build, and teach.</p>
+      <p>Today I work as <strong>Researcher & Lecturer in Generative AI</strong> at Universidad Austral, <strong>AI Engineer</strong> at Amulet AI (healthcare), and <strong>cofounder</strong> of Intuitiv AI (consultancy), OpuLens Vision Technologies (multimodal AI), and Arnium (AI infra).</p>
+      <p>I published at ICAPS 2023 on exploration policies for controller synthesis, and continue collaborating with the Software Engineering Lab at UBA. In parallel, I have taught Algorithms and Data Structures at UBA since 2022.</p>
+      <p>I write here every week — about what I learn building, researching, and teaching.</p>
+    </div>
+
+    <a href="/cv/marco-sanchez-sorondo-en.pdf" target="_blank" rel="noopener" class="mt-8 inline-block border border-ink px-6 py-3 text-xs uppercase tracking-widest hover:bg-ink hover:text-paper">
+      Download CV
+    </a>
+  </section>
+
+  {pubs.length > 0 && (
+    <section class="max-w-container mx-auto px-4 py-16 border-t border-line">
+      <SectionTitle title="Publications" />
+      {pubs.map(p => (
+        <PublicationCard {...p.data} />
+      ))}
+    </section>
+  )}
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import PublicationCard from '../../components/PublicationCard.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/prose.css';
+
+const pubs = (await getCollection('publications', (p) => p.id.startsWith('es/')))
+  .sort((a, b) => b.data.year - a.data.year);
+---
+<BaseLayout title="Acerca — Marco Sánchez Sorondo">
+  <section class="max-w-prose mx-auto px-4 py-16">
+    <img src="/placeholder-photo.svg" alt="Marco Sánchez Sorondo" class="w-48 h-48 rounded-full object-cover border border-line mb-8" />
+    <h1 class="font-display">Acerca</h1>
+    <div class="prose mt-6">
+      <p>Soy computer scientist formado en la UBA (Licenciatura equivalente a B.Sc. + M.Sc.), con foco en IA aplicada. Investigo, construyo y enseño.</p>
+      <p>Hoy trabajo como <strong>Researcher & Lecturer en IA generativa</strong> en la Universidad Austral, <strong>AI Engineer</strong> en Amulet AI (salud), y <strong>cofundador</strong> de Intuitiv AI (consultora), OpuLens Vision Technologies (IA multimodal) y Arnium (infra de IA).</p>
+      <p>Publiqué en ICAPS 2023 sobre exploration policies para controller synthesis, y sigo colaborando con el Software Engineering Lab de la UBA. En paralelo, doy clases de Algoritmos y Estructuras de Datos en la UBA desde 2022.</p>
+      <p>Escribo acá todas las semanas — sobre lo que aprendo construyendo, investigando y enseñando.</p>
+    </div>
+
+    <a href="/cv/marco-sanchez-sorondo-es.pdf" target="_blank" rel="noopener" class="mt-8 inline-block border border-ink px-6 py-3 text-xs uppercase tracking-widest hover:bg-ink hover:text-paper">
+      Descargar CV
+    </a>
+  </section>
+
+  {pubs.length > 0 && (
+    <section class="max-w-container mx-auto px-4 py-16 border-t border-line">
+      <SectionTitle title="Publicaciones" />
+      {pubs.map(p => (
+        <PublicationCard {...p.data} />
+      ))}
+    </section>
+  )}
+</BaseLayout>
