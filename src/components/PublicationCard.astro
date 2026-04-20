@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  venue: string;
+  year: number;
+  authors: string[];
+  pdfUrl?: string;
+  kind: 'paper' | 'talk' | 'workshop';
+}
+const { title, venue, year, authors, pdfUrl, kind } = Astro.props;
+const kindLabel: Record<string, string> = { paper: 'Paper', talk: 'Charla', workshop: 'Workshop' };
+---
+<article class="border-t border-line py-6">
+  <p class="text-xs uppercase tracking-widest text-ink-mute">{kindLabel[kind]} · {venue} · {year}</p>
+  <h3 class="font-display text-lg mt-1">{title}</h3>
+  <p class="text-sm text-ink-soft">{authors.join(', ')}</p>
+  {pdfUrl && (
+    <a href={pdfUrl} target="_blank" rel="noopener" class="inline-block mt-2 text-xs uppercase tracking-widest underline underline-offset-4">
+      Leer PDF
+    </a>
+  )}
+</article>
