@@ -32,8 +32,14 @@ export function t(lang: Lang) {
 
 export function getAltUrl(url: URL, target: Lang): string {
   const current = getLangFromUrl(url);
-  if (current === target) return url.pathname;
-  return url.pathname.replace(new RegExp(`^/${current}`), `/${target}`);
+  const qh = url.search + url.hash;
+  if (current === target) return url.pathname + qh;
+
+  const hasPrefix = url.pathname === `/${current}` || url.pathname.startsWith(`/${current}/`);
+  if (!hasPrefix) {
+    return `/${target}/` + qh;
+  }
+  return url.pathname.replace(new RegExp(`^/${current}`), `/${target}`) + qh;
 }
 
 export function localizedPath(lang: Lang, path: string): string {
