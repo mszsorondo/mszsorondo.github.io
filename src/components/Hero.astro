@@ -1,0 +1,35 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead: string;
+  ctaPrimary?: { href: string; label: string };
+  ctaSecondary?: { href: string; label: string };
+  photo?: string;
+}
+const { eyebrow, title, lead, ctaPrimary, ctaSecondary, photo = '/placeholder-photo.svg' } = Astro.props;
+---
+<section class="max-w-container mx-auto px-4 py-16 md:py-24">
+  <div class="grid md:grid-cols-[1fr_auto] gap-10 items-start">
+    <div>
+      {eyebrow && <p class="text-xs uppercase tracking-[0.2em] text-ink-mute mb-4">{eyebrow}</p>}
+      <h1 class="font-display" set:html={title} />
+      <p class="mt-6 text-lg text-ink-soft max-w-[56ch] leading-relaxed">{lead}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        {ctaPrimary && (
+          <a href={ctaPrimary.href} class="inline-block bg-ink text-paper px-6 py-3 text-xs uppercase tracking-[0.15em] font-semibold hover:opacity-90">
+            {ctaPrimary.label}
+          </a>
+        )}
+        {ctaSecondary && (
+          <a href={ctaSecondary.href} class="inline-block border border-ink px-6 py-3 text-xs uppercase tracking-[0.15em] font-semibold hover:bg-ink hover:text-paper">
+            {ctaSecondary.label}
+          </a>
+        )}
+      </div>
+    </div>
+    <div class="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border border-line">
+      <img src={photo} alt="Marco Sánchez Sorondo" class="w-full h-full object-cover" />
+    </div>
+  </div>
+</section>

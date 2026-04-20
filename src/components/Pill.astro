@@ -1,0 +1,6 @@
+---
+interface Props { label: string; href?: string; }
+const { label, href } = Astro.props;
+const base = 'inline-block text-xs uppercase tracking-widest px-3 py-1 border border-line';
+---
+{href ? <a class={base + ' hover:border-ink'} href={href}>{label}</a> : <span class={base}>{label}</span>}
