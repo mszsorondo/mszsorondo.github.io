@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import LogoStrip from '../../components/LogoStrip.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import { getCollection } from 'astro:content';
+import { t, route, localizedPath } from '../../i18n/utils';
+
+const lang = 'en' as const;
+const tr = t(lang);
+
+const projects = (await getCollection('projects', (p) => p.id.startsWith('en/') && p.data.featured))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const posts = (await getCollection('blog', (p) => p.id.startsWith('en/') && !p.data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+
+const services = (await getCollection('services', (s) => s.id.startsWith('en/')))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const readingMinutes = (content: string) =>
+  Math.max(1, Math.round(content.split(/\s+/).length / 200));
+
+const stripLocale = (id: string) => id.replace(/^en\//, '');
+---
+<BaseLayout title="Marco Sánchez Sorondo — AI research, building, and teaching" description={tr('home.heroSub')}>
+  <Hero
+    title={tr('home.heroLine')}
+    lead={tr('home.heroSub')}
+    ctaPrimary={{ href: route(lang, 'services'), label: tr('cta.schedule') }}
+    ctaSecondary={{ href: route(lang, 'blog'), label: tr('cta.readBlog') }}
+  />
+
+  <section class="max-w-container mx-auto px-4 py-12 grid md:grid-cols-3 gap-8 border-t border-line">
+    {[
+      { label: tr('home.pillarResearch'), body: 'Applied research in LLMs, RL, GNNs, and scalable systems.' },
+      { label: tr('home.pillarBuilding'), body: 'Cofounder of Intuitiv AI, OpuLens, and Arnium. Products in production.' },
+      { label: tr('home.pillarTeaching'), body: 'Lecturer at Universidad Austral and TA at UBA. Private classes and training.' }
+    ].map(p => (
+      <div>
+        <p class="text-xs uppercase tracking-[0.2em] text-ink-mute">{p.label}</p>
+        <p class="mt-2 text-ink-soft">{p.body}</p>
+      </div>
+    ))}
+  </section>
+
+  {projects.length > 0 && (
+    <section class="max-w-container mx-auto px-4 py-16">
+      <SectionTitle title={tr('home.featuredProjects')} />
+      <div class="grid md:grid-cols-2 gap-6">
+        {projects.map(p => (
+          <ProjectCard
+            name={p.data.name}
+            tagline={p.data.tagline}
+            status={p.data.status}
+            href={localizedPath(lang, `projects/${stripLocale(p.id)}`)}
+            stack={p.data.stack}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  {posts.length > 0 && (
+    <section class="max-w-container mx-auto px-4 py-16 border-t border-line">
+      <SectionTitle title={tr('home.latestPosts')} />
+      <div>
+        {posts.map(p => (
+          <BlogCard
+            title={p.data.title}
+            description={p.data.description}
+            pubDate={p.data.pubDate}
+            category={p.data.category}
+            href={localizedPath(lang, `blog/${stripLocale(p.id)}`)}
+            readingMinutes={readingMinutes(p.body ?? '')}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  {services.length > 0 && (
+    <section class="max-w-container mx-auto px-4 py-16 border-t border-line">
+      <SectionTitle title={tr('home.servicesPreview')} />
+      <div class="grid md:grid-cols-3 gap-6">
+        {services.map(s => (
+          <ServiceCard
+            title={s.data.title}
+            audience={s.data.audience}
+            includes={s.data.includes}
+            price={s.data.price}
+            calendlyUrl={s.data.calendlyUrl}
+            ctaLabel={tr('cta.bookCall')}
+            quoteLabel={tr('cta.quote')}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <LogoStrip
+    label={tr('home.orgsStrip')}
+    orgs={[
+      { name: 'Universidad Austral' },
+      { name: 'UBA' },
+      { name: 'Intuitiv AI' },
+      { name: 'Amulet AI' },
+      { name: 'OpuLens' },
+      { name: 'Arnium' }
+    ]}
+  />
+
+  <CTABanner />
+</BaseLayout>
