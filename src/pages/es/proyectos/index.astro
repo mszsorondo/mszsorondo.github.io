@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionTitle from '../../../components/SectionTitle.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects', (p) => p.id.startsWith('es/')))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const stripLocale = (id: string) => id.replace(/^es\//, '');
+---
+<BaseLayout title="Proyectos — Marco Sánchez Sorondo">
+  <section class="max-w-container mx-auto px-4 py-16">
+    <SectionTitle eyebrow="Ventures" title="Proyectos" subtitle="Lo que construyo, solo o con equipos." />
+    <div class="grid md:grid-cols-2 gap-6">
+      {projects.map(p => (
+        <ProjectCard
+          name={p.data.name}
+          tagline={p.data.tagline}
+          status={p.data.status}
+          href={`/es/proyectos/${stripLocale(p.id)}/`}
+          stack={p.data.stack}
+        />
+      ))}
+      {projects.length === 0 && <p class="text-ink-mute col-span-full">Pronto.</p>}
+    </div>
+  </section>
+</BaseLayout>

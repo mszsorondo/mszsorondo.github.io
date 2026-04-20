@@ -1,0 +1,48 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import Pill from '../components/Pill.astro';
+import '../styles/prose.css';
+
+interface Props {
+  frontmatter: {
+    name: string;
+    tagline: string;
+    status: string;
+    stack?: string[];
+    url?: string;
+    subProjects?: { name: string; tagline: string }[];
+  };
+}
+const { frontmatter } = Astro.props;
+const { name, tagline, status, stack = [], url, subProjects } = frontmatter;
+const statusLabel: Record<string, string> = { idea: 'Idea', wip: 'WIP', production: 'Producción', launched: 'Lanzado' };
+---
+<BaseLayout title={`${name} — Marco Sánchez Sorondo`} description={tagline}>
+  <article class="max-w-prose mx-auto px-4 py-16">
+    <p class="text-xs uppercase tracking-[0.2em] text-ink-mute">{statusLabel[status] ?? status}</p>
+    <h1 class="font-display mt-2">{name}</h1>
+    <p class="mt-4 text-lg text-ink-soft">{tagline}</p>
+    {url && <a href={url} target="_blank" rel="noopener" class="mt-6 inline-block border border-ink px-5 py-2 text-xs uppercase tracking-widest hover:bg-ink hover:text-paper">Ir al sitio →</a>}
+    {stack.length > 0 && <ul class="mt-6 flex flex-wrap gap-2">{stack.map(s => <li><Pill label={s} /></li>)}</ul>}
+
+    <div class="prose mt-10">
+      <slot />
+    </div>
+
+    {subProjects && subProjects.length > 0 && (
+      <section class="mt-12 border-t border-line pt-10">
+        <h2 class="font-display">Sub-proyectos</h2>
+        <ul class="mt-6 space-y-4">
+          {subProjects.map(sp => (
+            <li>
+              <h3 class="font-display text-xl">{sp.name}</h3>
+              <p class="text-ink-soft">{sp.tagline}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </article>
+  <CTABanner />
+</BaseLayout>
