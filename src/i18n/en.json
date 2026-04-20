@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "about": "About",
+    "work": "Work",
+    "projects": "Projects",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "cta": {
+    "schedule": "Book a call",
+    "readBlog": "Read the blog",
+    "downloadCv": "Download CV",
+    "bookCall": "Book a call",
+    "quote": "Get a quote",
+    "contact": "Contact"
+  },
+  "home": {
+    "heroLine": "Research, building, and teaching in AI.",
+    "heroSub": "Cofounder of Intuitiv AI, Arnium, and OpuLens. Generative AI researcher at Universidad Austral. Book a consultation, a class, or a training session.",
+    "pillarsLabel": "Three pillars",
+    "pillarResearch": "Research",
+    "pillarBuilding": "Building",
+    "pillarTeaching": "Teaching",
+    "featuredProjects": "Projects",
+    "latestPosts": "Latest posts",
+    "servicesPreview": "Services",
+    "orgsStrip": "Where I research, teach, and build"
+  },
+  "blog": {
+    "readingTime": "min read",
+    "searchPlaceholder": "Search posts…",
+    "allCategories": "All",
+    "translationMissing": "This post is only available in Spanish.",
+    "relatedPosts": "Related posts"
+  },
+  "services": {
+    "pageTitle": "Let's work together",
+    "pageLead": "Consulting, advisory, classes, and corporate training in applied AI.",
+    "faqTitle": "FAQ",
+    "testimonialsTitle": "What people say"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "language": "Language"
+  },
+  "error404": {
+    "title": "Page not found",
+    "body": "The URL you're looking for doesn't exist.",
+    "back": "Back to home"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "about": "Acerca",
+    "work": "Trabajo",
+    "projects": "Proyectos",
+    "services": "Servicios",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "cta": {
+    "schedule": "Agendar",
+    "readBlog": "Leer el blog",
+    "downloadCv": "Descargar CV",
+    "bookCall": "Reservar llamada",
+    "quote": "Cotizar",
+    "contact": "Contactar"
+  },
+  "home": {
+    "heroLine": "Investigación, construcción y enseñanza en IA.",
+    "heroSub": "Cofundador de Intuitiv AI, Arnium y OpuLens. Investigador en IA generativa en Universidad Austral. Agendá una consultoría, una clase o una capacitación.",
+    "pillarsLabel": "Tres pilares",
+    "pillarResearch": "Investigación",
+    "pillarBuilding": "Construcción",
+    "pillarTeaching": "Enseñanza",
+    "featuredProjects": "Proyectos",
+    "latestPosts": "Últimos del blog",
+    "servicesPreview": "Servicios",
+    "orgsStrip": "Donde investigo, enseño y construyo"
+  },
+  "blog": {
+    "readingTime": "min de lectura",
+    "searchPlaceholder": "Buscar posts…",
+    "allCategories": "Todas",
+    "translationMissing": "Este post solo está disponible en inglés.",
+    "relatedPosts": "Posts relacionados"
+  },
+  "services": {
+    "pageTitle": "Trabajemos juntos",
+    "pageLead": "Consultoría, advisory, clases y capacitación en IA aplicada.",
+    "faqTitle": "Preguntas frecuentes",
+    "testimonialsTitle": "Lo que dicen"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "language": "Idioma"
+  },
+  "error404": {
+    "title": "Página no encontrada",
+    "body": "La URL que buscás no existe.",
+    "back": "Volver al inicio"
+  }
+}
