@@ -1,7 +1,6 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap');
 @import "tailwindcss";
 
-@import '@fontsource/playfair-display/500.css';
-@import '@fontsource/playfair-display/600.css';
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
@@ -18,7 +17,7 @@
   --color-line: #e5e5e5;
   --color-accent: #0a0a0a;
 
-  --font-display: "Playfair Display", Georgia, serif;
+  --font-display: "Satoshi", "Inter", sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-prose: "Source Serif 4", Georgia, serif;
   --font-mono: "JetBrains Mono", Menlo, monospace;
@@ -34,7 +33,7 @@
   --accent: #0a0a0a;
   --focus: #2563eb;
 
-  --font-display-var: "Playfair Display", Georgia, serif;
+  --font-display-var: "Satoshi", "Inter", sans-serif;
   --font-body-var: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-prose-var: "Source Serif 4", Georgia, serif;
   --font-mono-var: "JetBrains Mono", Menlo, monospace;
@@ -65,9 +64,9 @@ body { margin: 0; line-height: 1.6; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display-var);
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
   margin: 0;
 }
 h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
