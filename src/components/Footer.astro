@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl, t, route, localizedPath } from '../i18n/utils';
-import RingMark from './RingMark.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const tr = t(lang);
@@ -9,11 +8,10 @@ const year = new Date().getFullYear();
 <footer class="mt-24 border-t border-line">
   <div class="max-w-container mx-auto px-4 py-12 grid gap-8 md:grid-cols-3">
     <div>
-      <a href={localizedPath(lang, '')} class="flex items-center gap-2 font-semibold">
-        <span>MSS</span>
-        <RingMark size={16} />
+      <a href={localizedPath(lang, '')} class="font-semibold tracking-tight">
+        Marco Sánchez Sorondo
       </a>
-      <p class="mt-3 text-sm text-ink-mute">Marco Sánchez Sorondo · Buenos Aires, Argentina</p>
+      <p class="mt-3 text-sm text-ink-mute">Buenos Aires, Argentina</p>
     </div>
 
     <nav class="text-sm space-y-2">
