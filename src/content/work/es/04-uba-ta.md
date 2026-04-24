@@ -1,5 +1,5 @@
 ---
-role: "Teaching Assistant — Algoritmos y Estructuras de Datos I"
+role: "Ayudante — Algoritmos y Estructuras de Datos I"
 org: "Universidad de Buenos Aires"
 startDate: 2022-06-01
 endDate: null

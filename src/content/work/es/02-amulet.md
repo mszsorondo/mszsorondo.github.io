@@ -1,5 +1,5 @@
 ---
-role: "AI Engineer & Platform Developer"
+role: "Ingeniero de IA y Desarrollador de Plataforma"
 org: "Amulet AI"
 startDate: 2025-01-01
 endDate: null

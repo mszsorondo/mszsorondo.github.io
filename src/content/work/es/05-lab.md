@@ -1,5 +1,5 @@
 ---
-role: "Research Intern — Software Engineering Lab (ICC)"
+role: "Pasante de Investigación — Laboratorio de Ingeniería de Software (ICC)"
 org: "Universidad de Buenos Aires"
 startDate: 2022-06-01
 endDate: 2023-12-01

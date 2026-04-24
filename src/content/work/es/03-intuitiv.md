@@ -1,5 +1,5 @@
 ---
-role: "Cofounder & AI/Platform Engineer"
+role: "Cofundador e Ingeniero de IA y Plataforma"
 org: "Intuitiv AI"
 startDate: 2025-01-01
 endDate: null
