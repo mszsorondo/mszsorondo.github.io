@@ -29,7 +29,7 @@ export default function CalendlyEmbed({ url, fallbackLabel }: Props) {
     return (
       <div className="border border-line p-6 text-center">
         <p className="text-ink-soft">{fallbackLabel}</p>
-        <a href={url} target="_blank" rel="noopener" className="mt-3 inline-block border border-ink px-5 py-2 text-xs uppercase tracking-widest hover:bg-ink hover:text-paper">
+        <a href={url} target="_blank" rel="noopener" className="mt-3 inline-block border border-ink px-5 py-2 text-xs uppercase tracking-widest hover:bg-ink hover:text-white">
           Calendly →
         </a>
       </div>

@@ -17,12 +17,12 @@ const { eyebrow, title, lead, ctaPrimary, ctaSecondary, photo = '/placeholder-ph
       <p class="mt-6 text-lg text-ink-soft max-w-[56ch] leading-relaxed">{lead}</p>
       <div class="mt-8 flex flex-wrap gap-3">
         {ctaPrimary && (
-          <a href={ctaPrimary.href} class="inline-block bg-ink text-paper px-6 py-3 text-xs uppercase tracking-[0.15em] font-semibold hover:opacity-90">
+          <a href={ctaPrimary.href} class="inline-block bg-ink text-white px-6 py-3 text-xs uppercase tracking-[0.15em] font-semibold hover:opacity-90">
             {ctaPrimary.label}
           </a>
         )}
         {ctaSecondary && (
-          <a href={ctaSecondary.href} class="inline-block border border-ink px-6 py-3 text-xs uppercase tracking-[0.15em] font-semibold hover:bg-ink hover:text-paper">
+          <a href={ctaSecondary.href} class="inline-block border border-ink px-6 py-3 text-xs uppercase tracking-[0.15em] font-semibold hover:bg-ink hover:text-white">
             {ctaSecondary.label}
           </a>
         )}

@@ -23,7 +23,7 @@ const statusLabel: Record<string, string> = { idea: 'Idea', wip: 'WIP', producti
     <p class="text-xs uppercase tracking-[0.2em] text-ink-mute">{statusLabel[status] ?? status}</p>
     <h1 class="font-display mt-2">{name}</h1>
     <p class="mt-4 text-lg text-ink-soft">{tagline}</p>
-    {url && <a href={url} target="_blank" rel="noopener" class="mt-6 inline-block border border-ink px-5 py-2 text-xs uppercase tracking-widest hover:bg-ink hover:text-paper">Ir al sitio →</a>}
+    {url && <a href={url} target="_blank" rel="noopener" class="mt-6 inline-block border border-ink px-5 py-2 text-xs uppercase tracking-widest hover:bg-ink hover:text-white">Ir al sitio →</a>}
     {stack.length > 0 && <ul class="mt-6 flex flex-wrap gap-2">{stack.map(s => <li><Pill label={s} /></li>)}</ul>}
 
     <div class="prose mt-10">
