@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const posts = await getCollection('blog', (p) => p.id.startsWith('en/') && !p.data.draft);
   const cats = Array.from(new Set(posts.map(p => p.data.category)));
   return cats.map(cat => ({
-    params: { cat: encodeURIComponent(cat) },
+    params: { cat },
     props: { cat, posts: posts.filter(p => p.data.category === cat) },
   }));
 }
