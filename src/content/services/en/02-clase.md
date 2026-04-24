@@ -1,6 +1,5 @@
 ---
 title: "Private class / tutoring"
-slug: "clase"
 audience: "Students and professionals pivoting to AI."
 includes:
   - "1:1 one-hour session."

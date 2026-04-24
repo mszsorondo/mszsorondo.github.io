@@ -1,6 +1,5 @@
 ---
 title: "Corporate training"
-slug: "capacitacion"
 audience: "Engineering or product teams leveling up in AI."
 includes:
   - "Program tailored to the team's stack and level."

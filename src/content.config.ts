@@ -35,7 +35,6 @@ const services = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/services' }),
   schema: z.object({
     title: z.string(),
-    slug: z.string(),
     audience: z.string(),
     includes: z.array(z.string()),
     price: z.string().nullable().default(null),

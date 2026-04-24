@@ -1,6 +1,5 @@
 ---
 title: "Clase particular / tutoría"
-slug: "clase"
 audience: "Estudiantes y profesionales pivotando a IA."
 includes:
   - "Sesión 1:1 de 1 hora."

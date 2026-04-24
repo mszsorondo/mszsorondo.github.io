@@ -1,6 +1,5 @@
 ---
 title: "Technical advisory / code review"
-slug: "advisory"
 audience: "Technical founders and teams who need a second opinion."
 includes:
   - "Review of architecture, code, and prompt/agent design."

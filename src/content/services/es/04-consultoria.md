@@ -1,6 +1,5 @@
 ---
 title: "Consultoría 1:1 para empresas"
-slug: "consultoria"
 audience: "Empresas medianas con un problema concreto de IA aplicada."
 includes:
   - "Discovery y definición de alcance."

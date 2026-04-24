@@ -1,6 +1,5 @@
 ---
 title: "Llamada intro"
-slug: "intro"
 audience: "Quien tenga una idea o un problema concreto."
 includes:
   - "Call de 15–30 minutos."

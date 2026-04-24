@@ -1,6 +1,5 @@
 ---
 title: "Intro call"
-slug: "intro"
 audience: "Anyone with a concrete idea or problem."
 includes:
   - "15–30 minute call."

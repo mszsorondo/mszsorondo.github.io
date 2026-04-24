@@ -1,6 +1,5 @@
 ---
 title: "Capacitación corporativa"
-slug: "capacitacion"
 audience: "Equipos de ingeniería o producto que quieren subir de nivel en IA."
 includes:
   - "Programa adaptado al stack y nivel del equipo."

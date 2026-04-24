@@ -1,6 +1,5 @@
 ---
 title: "Technical advisory / code review"
-slug: "advisory"
 audience: "Founders técnicos y equipos que necesitan una segunda opinión."
 includes:
   - "Revisión de arquitectura, código y diseño de prompts/agentes."
