@@ -6,6 +6,5 @@ includes:
   - "Diseño e implementación de la solución, solo o con equipo."
   - "Handoff a equipo interno con documentación."
 price: null
-calendlyUrl: "https://calendly.com/marco-sanchez-sorondo/consultoria"
 order: 4
 ---

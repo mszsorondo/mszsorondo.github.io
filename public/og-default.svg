@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <rect x="0" y="0" width="6" height="630" fill="#0a0a0a"/>
+  <text x="80" y="290" font-family="Satoshi, -apple-system, Helvetica, sans-serif" font-weight="600" font-size="84" fill="#0a0a0a" letter-spacing="-3">Marco Sánchez</text>
+  <text x="80" y="380" font-family="Satoshi, -apple-system, Helvetica, sans-serif" font-weight="600" font-size="84" fill="#0a0a0a" letter-spacing="-3">Sorondo</text>
+  <text x="80" y="470" font-family="Inter, -apple-system, Helvetica, sans-serif" font-weight="400" font-size="32" fill="#3a3a3a">Investigación, construcción y enseñanza en IA</text>
+  <text x="80" y="560" font-family="Inter, -apple-system, Helvetica, sans-serif" font-weight="500" font-size="20" fill="#7a7a7a" letter-spacing="3">MARCOSANCHEZSORONDO.GITHUB.IO</text>
+</svg>

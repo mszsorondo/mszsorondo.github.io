@@ -6,6 +6,5 @@ includes:
   - "Concrete, documented recommendations."
   - "Two weeks of async follow-up."
 price: null
-calendlyUrl: "https://calendly.com/marco-sanchez-sorondo/advisory"
 order: 3
 ---

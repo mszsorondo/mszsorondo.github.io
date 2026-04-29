@@ -4,6 +4,7 @@ import SectionTitle from '../../components/SectionTitle.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
 import Testimonial from '../../components/Testimonial.astro';
 import FAQ from '../../components/FAQ.astro';
+import ContactBlock from '../../components/ContactBlock.astro';
 import { getCollection } from 'astro:content';
 import { t } from '../../i18n/utils';
 
@@ -32,13 +33,18 @@ const faqItems = [
           audience={s.data.audience}
           includes={s.data.includes}
           price={s.data.price}
-          calendlyUrl={s.data.calendlyUrl}
-          ctaLabel={tr('cta.bookCall')}
           quoteLabel={tr('cta.quote')}
         />
       ))}
       {services.length === 0 && <p class="text-ink-mute col-span-full">Coming soon.</p>}
     </div>
+  </section>
+
+  <section class="border-t border-line">
+    <ContactBlock
+      title="Interested in any of these?"
+      subtitle="Book a 15-minute call so we can meet and check the fit, or write to me directly."
+    />
   </section>
 
   {testimonials.length > 0 && (

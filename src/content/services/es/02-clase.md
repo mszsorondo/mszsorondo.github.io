@@ -6,6 +6,5 @@ includes:
   - "Material y referencias posteriores."
   - "Seguimiento async por email entre sesiones."
 price: "USD 80/h"
-calendlyUrl: "https://calendly.com/marco-sanchez-sorondo/clase-1h"
 order: 2
 ---

@@ -6,6 +6,5 @@ includes:
   - "On-site or online sessions."
   - "Materials, exercises, and reference repository."
 price: null
-calendlyUrl: "https://calendly.com/marco-sanchez-sorondo/capacitacion"
 order: 5
 ---

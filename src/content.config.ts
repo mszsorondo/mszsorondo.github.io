@@ -38,7 +38,7 @@ const services = defineCollection({
     audience: z.string(),
     includes: z.array(z.string()),
     price: z.string().nullable().default(null),
-    calendlyUrl: z.string().url(),
+    calendlyUrl: z.string().url().optional(),
     order: z.number(),
   }),
 });
