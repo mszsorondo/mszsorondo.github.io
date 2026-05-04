@@ -18,10 +18,6 @@ const pubs = (await getCollection('publications', (p) => p.id.startsWith('es/'))
       <p>Publiqué en ICAPS 2023 sobre exploration policies para controller synthesis, y sigo colaborando con el Software Engineering Lab de la UBA. En paralelo, doy clases de Algoritmos y Estructuras de Datos en la UBA desde 2022.</p>
       <p>Escribo acá todas las semanas — sobre lo que aprendo construyendo, investigando y enseñando.</p>
     </div>
-
-    <a href="/cv/marco-sanchez-sorondo-es.pdf" target="_blank" rel="noopener" class="mt-8 inline-block border border-ink px-6 py-3 text-xs uppercase tracking-widest hover:bg-ink hover:text-white">
-      Descargar CV
-    </a>
   </section>
 
   {pubs.length > 0 && (

@@ -18,10 +18,6 @@ const pubs = (await getCollection('publications', (p) => p.id.startsWith('en/'))
       <p>I published at ICAPS 2023 on exploration policies for controller synthesis, and continue collaborating with the Software Engineering Lab at UBA. In parallel, I have taught Algorithms and Data Structures at UBA since 2022.</p>
       <p>I write here every week — about what I learn building, researching, and teaching.</p>
     </div>
-
-    <a href="/cv/marco-sanchez-sorondo-en.pdf" target="_blank" rel="noopener" class="mt-8 inline-block border border-ink px-6 py-3 text-xs uppercase tracking-widest hover:bg-ink hover:text-white">
-      Download CV
-    </a>
   </section>
 
   {pubs.length > 0 && (
