@@ -8,16 +8,19 @@ interface Props {
   showGitHub?: boolean;
 }
 const { title, subtitle, showLinkedIn = true, showGitHub = true } = Astro.props;
+
+const emailB64 = Buffer.from(contact.email).toString('base64');
+const phoneB64 = Buffer.from(contact.phoneTel).toString('base64');
 ---
 <section class="max-w-prose mx-auto px-4 py-12">
   {title && <h2 class="font-display">{title}</h2>}
   {subtitle && <p class="mt-3 text-ink-soft">{subtitle}</p>}
   <ul class="mt-6 space-y-3 text-lg">
     <li>
-      <a href={`mailto:${contact.email}`} class="underline underline-offset-4">{contact.email}</a>
+      <a class="underline underline-offset-4" href="#" data-mail={emailB64} aria-label="Email">Email</a>
     </li>
     <li>
-      <a href={`tel:${contact.phoneTel}`} class="underline underline-offset-4">{contact.phoneDisplay}</a>
+      <a class="underline underline-offset-4" href="#" data-tel={phoneB64} data-tel-display={contact.phoneDisplay} aria-label="Teléfono">Teléfono</a>
     </li>
     {showLinkedIn && (
       <li>

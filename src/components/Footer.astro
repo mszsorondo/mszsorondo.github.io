@@ -1,9 +1,11 @@
 ---
 import { getLangFromUrl, t, route, localizedPath } from '../i18n/utils';
+import { contact } from '../lib/contact';
 
 const lang = getLangFromUrl(Astro.url);
 const tr = t(lang);
 const year = new Date().getFullYear();
+const emailB64 = Buffer.from(contact.email).toString('base64');
 ---
 <footer class="mt-24 border-t border-line">
   <div class="max-w-container mx-auto px-4 py-12 grid gap-8 md:grid-cols-3">
@@ -22,9 +24,9 @@ const year = new Date().getFullYear();
     </nav>
 
     <div class="text-sm space-y-2">
-      <a class="block hover:underline" href="https://linkedin.com/in/marco-sanchez-sorondo" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="block hover:underline" href="https://github.com/mszsorondo" target="_blank" rel="noopener">GitHub</a>
-      <a class="block hover:underline" href="mailto:msorondo@live.com.ar">msorondo@live.com.ar</a>
+      <a class="block hover:underline" href={contact.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+      <a class="block hover:underline" href={contact.github} target="_blank" rel="noopener">GitHub</a>
+      <a class="block hover:underline" href="#" data-mail={emailB64} aria-label="Email">Email</a>
       <a class="block hover:underline" href={lang === 'es' ? '/rss.xml' : '/en/rss.xml'}>RSS</a>
     </div>
   </div>

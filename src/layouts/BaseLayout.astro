@@ -46,5 +46,23 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
       <slot />
     </main>
     <Footer />
+    <script is:inline>
+      (function () {
+        document.querySelectorAll('a[data-mail]').forEach(function (el) {
+          var v = atob(el.getAttribute('data-mail'));
+          el.setAttribute('href', 'mailto:' + v);
+          el.textContent = v;
+          el.removeAttribute('data-mail');
+        });
+        document.querySelectorAll('a[data-tel]').forEach(function (el) {
+          var v = atob(el.getAttribute('data-tel'));
+          var d = el.getAttribute('data-tel-display') || v;
+          el.setAttribute('href', 'tel:' + v);
+          el.textContent = d;
+          el.removeAttribute('data-tel');
+          el.removeAttribute('data-tel-display');
+        });
+      })();
+    </script>
   </body>
 </html>
