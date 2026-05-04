@@ -6,7 +6,9 @@ endDate: null
 kind: "applied"
 bullets:
   - "Cofounded and scaled to profitability an AI consultancy with clients across industries."
-  - "Involved at every level: solution design, web development, LLM agents, backend, integration."
-  - "Business development, client acquisition, and delivery."
+  - "Built and run platform.intuitiv-ai.com, our AI automation and adoption consulting platform."
+  - "End-to-end delivery: solution design, web/app engineering, LLM agents, backend infrastructure, client integration."
+  - "Stack: React/TypeScript on frontend, Python/Node.js on backend; LangChain, LangGraph, LangSmith, HuggingFace, n8n."
+  - "Business development: client acquisition, sales, and delivery."
 location: "Remote"
 ---

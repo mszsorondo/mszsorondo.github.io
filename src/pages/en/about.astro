@@ -13,11 +13,22 @@ const pubs = (await getCollection('publications', (p) => p.id.startsWith('en/'))
     <img src="/placeholder-photo.svg" alt="Marco Sánchez Sorondo" class="w-48 h-48 rounded-full object-cover border border-line mb-8" />
     <h1 class="font-display">About</h1>
     <div class="prose mt-6">
-      <p>I'm a computer scientist trained at UBA (equivalent to a combined B.Sc. + M.Sc.), focused on applied AI. I research, build, and teach.</p>
-      <p>Today I work as <strong>Researcher & Lecturer in Generative AI</strong> at Universidad Austral, <strong>AI Engineer</strong> at Amulet AI (healthcare), and <strong>cofounder</strong> of Intuitiv AI (consultancy), OpuLens Vision Technologies (multimodal AI), and Arnium (AI infra).</p>
-      <p>I published at ICAPS 2023 on exploration policies for controller synthesis, and continue collaborating with the Software Engineering Lab at UBA. In parallel, I have taught Algorithms and Data Structures at UBA since 2022.</p>
-      <p>I write here every week — about what I learn building, researching, and teaching.</p>
+      <p>AI researcher and engineer working at the intersection of academic research and applied AI entrepreneurship. Licenciado en Ciencias de la Computación from University of Buenos Aires (equivalent to a combined B.Sc. + M.Sc.).</p>
+      <p>I currently work as <strong>Researcher & Lecturer in Generative AI & Computer Vision</strong> at Universidad Austral, <strong>AI Engineer</strong> at Peak Health (getpeakhealth.com), and <strong>cofounder</strong> of Intuitiv AI (profitable AI consultancy), OpuLens Vision Technologies (multimodal AI), and Arnium (AI infrastructure).</p>
+      <p>Published at <strong>ICAPS 2023</strong> on exploration policies for controller synthesis — research at the intersection of formal methods and deep learning. Still collaborating with the Software Engineering Lab at UBA. In parallel, I have taught Algorithms and Data Structures at UBA since 2022.</p>
+      <p>Full-stack comfort from low-level systems (x86-64 ASM, kernels, FPGAs) to frontier LLM tooling (LangChain, LangGraph, HuggingFace).</p>
+      <p>Research interests: <em>Large Language Models, Reinforcement Learning, Graph Neural Networks, scalable AI systems, safe & responsible AI (alignment, robustness, reliability)</em>, and applications of ML in optimization, networks, and decision-making.</p>
     </div>
+  </section>
+
+  <section class="max-w-prose mx-auto px-4 pb-12">
+    <SectionTitle eyebrow="Awards & activities" title="Leadership, awards & community" />
+    <ul class="space-y-4 text-ink-soft">
+      <li><strong>1st Place, Facebook Hack en Español 2022</strong> — Meta's Spanish-language programming competition, won by a significant margin with team "Perseverance Again".</li>
+      <li><strong>Sponsor & Finance Chair — LXAI Workshop, NeurIPS 2025</strong> (accel.ai, San Diego). Same remit as at NeurIPS 2023 (New Orleans): sponsor acquisition, financial planning, and workshop logistics.</li>
+      <li><strong>Sponsor & Finance Chair — LXAI Workshop, NeurIPS 2023</strong> (accel.ai, New Orleans).</li>
+      <li><strong>UN Youth Symposium</strong> (United Nations & Pontifical Academy of Sciences) — three-time selected participant (2019, 2020, 2021) on "Inter-generational Leadership for Sustainable Development".</li>
+    </ul>
   </section>
 
   {pubs.length > 0 && (
