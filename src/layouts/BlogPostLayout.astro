@@ -17,8 +17,20 @@ const { frontmatter, readingMinutes } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const tr = t(lang);
 const fmt = new Intl.DateTimeFormat(lang === 'es' ? 'es-AR' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  datePublished: frontmatter.pubDate.toISOString(),
+  inLanguage: lang === 'es' ? 'es-AR' : 'en-US',
+  articleSection: frontmatter.category,
+  author: { '@type': 'Person', name: 'Marco Sánchez Sorondo' },
+  url: new URL(Astro.url.pathname, Astro.site).toString(),
+};
 ---
-<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description} jsonLd={articleSchema}>
   <article class="max-w-prose mx-auto px-4 py-16">
     <header class="mb-10">
       <p class="text-xs uppercase tracking-[0.2em] text-ink-mute">{frontmatter.category} · {readingMinutes} {tr('blog.readingTime')} · <time datetime={frontmatter.pubDate.toISOString()}>{fmt.format(frontmatter.pubDate)}</time></p>

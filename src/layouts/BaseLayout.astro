@@ -8,22 +8,49 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  jsonLd?: Record<string, any>;
 }
 const {
   title,
   description = 'Marco Sánchez Sorondo — Investigación, construcción y enseñanza en IA.',
   ogImage = '/og-default.svg',
+  jsonLd,
 } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const altLang: 'es' | 'en' = lang === 'es' ? 'en' : 'es';
 const altUrl = getAltUrl(Astro.url, altLang);
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Marco Sánchez Sorondo',
+  jobTitle: 'AI Researcher & Engineer',
+  url: Astro.site!.toString(),
+  image: new URL('/marco.jpg', Astro.site).toString(),
+  sameAs: [
+    'https://linkedin.com/in/marco-sanchez-sorondo',
+    'https://github.com/mszsorondo',
+  ],
+  worksFor: [
+    { '@type': 'Organization', name: 'Universidad Austral' },
+    { '@type': 'Organization', name: 'Peak Health', url: 'https://getpeakhealth.com' },
+    { '@type': 'Organization', name: 'Intuitiv AI', url: 'https://intuitiv-ai.com' },
+  ],
+  knowsAbout: [
+    'Large Language Models', 'Reinforcement Learning', 'Graph Neural Networks',
+    'Generative AI', 'Computer Vision', 'AI Agents', 'Formal Methods',
+  ],
+  knowsLanguage: ['es', 'en'],
+};
 ---
 <!DOCTYPE html>
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="author" content="Marco Sánchez Sorondo" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -36,9 +63,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Marco Sánchez Sorondo" />
+    <meta property="og:locale" content={lang === 'es' ? 'es_AR' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@marcoszsd" />
     <link rel="alternate" type="application/rss+xml" title="Blog ES" href="/rss.xml" />
     <link rel="alternate" type="application/rss+xml" title="Blog EN" href="/en/rss.xml" />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
     <Nav />
