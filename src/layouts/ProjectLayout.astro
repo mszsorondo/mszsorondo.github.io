@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import CTABanner from '../components/CTABanner.astro';
+import ContactBlock from '../components/ContactBlock.astro';
 import Pill from '../components/Pill.astro';
 import '../styles/prose.css';
 
@@ -44,5 +44,5 @@ const statusLabel: Record<string, string> = { idea: 'Idea', wip: 'WIP', producti
       </section>
     )}
   </article>
-  <CTABanner />
+  <ContactBlock bordered />
 </BaseLayout>

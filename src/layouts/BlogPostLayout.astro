@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import CTABanner from '../components/CTABanner.astro';
+import ContactBlock from '../components/ContactBlock.astro';
 import '../styles/prose.css';
 import { getLangFromUrl, t } from '../i18n/utils';
 
@@ -29,5 +29,5 @@ const fmt = new Intl.DateTimeFormat(lang === 'es' ? 'es-AR' : 'en-US', { year: '
       <slot />
     </div>
   </article>
-  <CTABanner />
+  <ContactBlock bordered />
 </BaseLayout>

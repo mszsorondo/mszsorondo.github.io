@@ -6,7 +6,7 @@ import ProjectCard from '../../components/ProjectCard.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
 import LogoStrip from '../../components/LogoStrip.astro';
-import CTABanner from '../../components/CTABanner.astro';
+import ContactBlock from '../../components/ContactBlock.astro';
 import { getCollection } from 'astro:content';
 import { t, route, localizedPath } from '../../i18n/utils';
 
@@ -110,5 +110,5 @@ const stripLocale = (id: string) => id.replace(/^es\//, '');
     ]}
   />
 
-  <CTABanner />
+  <ContactBlock bordered />
 </BaseLayout>
