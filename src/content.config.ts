@@ -27,6 +27,7 @@ const projects = defineCollection({
     stack: z.array(z.string()).default([]),
     order: z.number(),
     featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
     subProjects: z.array(z.object({ name: z.string(), tagline: z.string() })).optional(),
   }),
 });

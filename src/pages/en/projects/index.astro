@@ -4,7 +4,7 @@ import SectionTitle from '../../../components/SectionTitle.astro';
 import ProjectCard from '../../../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
 
-const projects = (await getCollection('projects', (p) => p.id.startsWith('en/')))
+const projects = (await getCollection('projects', (p) => p.id.startsWith('en/') && !p.data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 
 const stripLocale = (id: string) => id.replace(/^en\//, '');

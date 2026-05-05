@@ -13,7 +13,7 @@ import { t, route, localizedPath } from '../../i18n/utils';
 const lang = 'en' as const;
 const tr = t(lang);
 
-const projects = (await getCollection('projects', (p) => p.id.startsWith('en/') && p.data.featured))
+const projects = (await getCollection('projects', (p) => p.id.startsWith('en/') && p.data.featured && !p.data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 
 const posts = (await getCollection('blog', (p) => p.id.startsWith('en/') && !p.data.draft))
@@ -40,7 +40,7 @@ const stripLocale = (id: string) => id.replace(/^en\//, '');
   <section class="max-w-container mx-auto px-4 py-12 grid md:grid-cols-3 gap-8 border-t border-line">
     {[
       { label: tr('home.pillarResearch'), body: 'Applied research in LLMs, RL, GNNs, and scalable systems.' },
-      { label: tr('home.pillarBuilding'), body: 'Cofounder of Intuitiv AI, OpuLens, and Arnium. Products in production.' },
+      { label: tr('home.pillarBuilding'), body: 'Cofounder of Intuitiv AI (profitable AI consultancy). Products serving clients across industries.' },
       { label: tr('home.pillarTeaching'), body: 'Lecturer at Universidad Austral and TA at UBA. Private classes and training.' }
     ].map(p => (
       <div>
@@ -108,9 +108,7 @@ const stripLocale = (id: string) => id.replace(/^en\//, '');
       { name: 'Universidad Austral' },
       { name: 'UBA' },
       { name: 'Intuitiv AI' },
-      { name: 'Peak Health' },
-      { name: 'OpuLens' },
-      { name: 'Arnium' }
+      { name: 'Peak Health' }
     ]}
   />
 

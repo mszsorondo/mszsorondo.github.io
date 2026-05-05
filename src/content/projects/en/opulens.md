@@ -5,6 +5,7 @@ status: "wip"
 stack: ["llm", "multimodal", "computer-vision", "voice"]
 order: 3
 featured: true
+draft: true
 subProjects:
   - name: "health.opulens"
     tagline: "Automated diagnosis from medical studies, conversational agent for doctors and patients, DTC pharma."
