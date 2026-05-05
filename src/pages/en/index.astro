@@ -41,7 +41,7 @@ const stripLocale = (id: string) => id.replace(/^en\//, '');
     {[
       { label: tr('home.pillarResearch'), body: 'Applied research in LLMs, RL, GNNs, and scalable systems.' },
       { label: tr('home.pillarBuilding'), body: 'Cofounder of Intuitiv AI (profitable AI consultancy). Products serving clients across industries.' },
-      { label: tr('home.pillarTeaching'), body: 'Lecturer at Universidad Austral and TA at UBA. Private classes and training.' }
+      { label: tr('home.pillarTeaching'), body: 'Lecturer at Universidad Austral and TA at UBA. Team training.' }
     ].map(p => (
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-ink-mute">{p.label}</p>
@@ -94,8 +94,6 @@ const stripLocale = (id: string) => id.replace(/^en\//, '');
             title={s.data.title}
             audience={s.data.audience}
             includes={s.data.includes}
-            price={s.data.price}
-            quoteLabel={tr('cta.quote')}
           />
         ))}
       </div>

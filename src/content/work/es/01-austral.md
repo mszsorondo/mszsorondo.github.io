@@ -1,5 +1,5 @@
 ---
-role: "Investigador y Docente — IA Generativa & Computer Vision"
+role: "Investigador y Profesor — IA Generativa & Computer Vision"
 org: "Universidad Austral"
 startDate: 2025-08-01
 endDate: null

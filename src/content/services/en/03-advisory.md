@@ -1,10 +1,9 @@
 ---
-title: "Technical advisory / code review"
+title: "Technical advisory"
 audience: "Technical founders and teams who need a second opinion."
 includes:
-  - "Review of architecture, code, and prompt/agent design."
+  - "Architecture, code, and prompt/agent design review."
   - "Concrete, documented recommendations."
-  - "Two weeks of async follow-up."
-price: null
+  - "Async support throughout the engagement."
 order: 3
 ---

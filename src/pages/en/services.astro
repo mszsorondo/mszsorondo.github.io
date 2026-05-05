@@ -18,7 +18,6 @@ const testimonials = await getCollection('testimonials', (t) => t.id.startsWith(
 const faqItems = [
   { q: 'What kind of companies do you take on?', a: 'Startups, scale-ups, and mid-size companies where someone owns the problem and can decide fast.' },
   { q: 'Do you work with remote teams?', a: 'Yes, most of my clients are outside Argentina. I work asynchronously with scheduled syncs.' },
-  { q: 'What do I need for the first class?', a: 'Just a concrete question. We define scope and materials in the intro call.' },
   { q: 'Do you run corporate trainings?', a: "Yes, I tailor programs to internal stacks and team level. Typically 1-3 days on-site or spread across weekly sessions." },
   { q: 'How do you invoice?', a: 'USD invoicing for clients outside AR, local invoice in Argentina. 1:1 consulting mandates go under my personal name.' },
 ];
@@ -32,8 +31,6 @@ const faqItems = [
           title={s.data.title}
           audience={s.data.audience}
           includes={s.data.includes}
-          price={s.data.price}
-          quoteLabel={tr('cta.quote')}
         />
       ))}
       {services.length === 0 && <p class="text-ink-mute col-span-full">Coming soon.</p>}
