@@ -40,15 +40,15 @@ La sección aparece en `/servicios` solo si hay testimonios cargados. Crear:
 
 ### 6. Crear el repo en GitHub y pushear
 ```bash
-# En GitHub: crear repo público "marcosanchezsorondo.github.io" (vacío, sin README/gitignore)
-cd ~/Escritorio/personal/marcosanchezsorondo.github.io
-git remote add origin git@github.com:mszsorondo/marcosanchezsorondo.github.io.git
+# En GitHub: crear repo público "mszsorondo.github.io" (vacío, sin README/gitignore)
+cd ~/Escritorio/personal/mszsorondo.github.io
+git remote add origin git@github.com:mszsorondo/mszsorondo.github.io.git
 git push -u origin main
 ```
 
 ### 7. Activar GitHub Pages
 - GitHub → Settings → Pages → **Source: GitHub Actions**
-- Primer push dispara el workflow; 1-2 min después el sitio está live en `https://marcosanchezsorondo.github.io/`.
+- Primer push dispara el workflow; 1-2 min después el sitio está live en `https://mszsorondo.github.io/`.
 
 ## Baja prioridad / futuras iteraciones
 

@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 
 export default defineConfig({
-  site: 'https://marcosanchezsorondo.github.io',
+  site: 'https://mszsorondo.github.io',
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en'],

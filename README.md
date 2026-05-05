@@ -1,4 +1,4 @@
-# marcosanchezsorondo.github.io
+# mszsorondo.github.io
 
 Portfolio personal de Marco Sánchez Sorondo — bilingüe (ES/EN), con blog, proyectos, servicios agendables y posicionamiento de thought leadership en IA.
 
@@ -24,7 +24,7 @@ npm run test           # Playwright smoke tests
 
 ## Deploy
 
-Push a `main` → GitHub Actions → GitHub Pages → https://marcosanchezsorondo.github.io/
+Push a `main` → GitHub Actions → GitHub Pages → https://mszsorondo.github.io/
 
 **Setup inicial (una vez):** GitHub → Settings → Pages → Source: **GitHub Actions**.
 
