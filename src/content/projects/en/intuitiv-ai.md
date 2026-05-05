@@ -4,7 +4,7 @@ tagline: "Cofounded AI consultancy, profitable, with clients across industries."
 status: "launched"
 url: "https://intuitiv.ai"
 stack: ["llm", "agents", "automation", "backend"]
-order: 2
+order: 1
 featured: true
 ---
 

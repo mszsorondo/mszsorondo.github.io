@@ -4,7 +4,7 @@ tagline: "Anotá tareas, avanzá en la cola, encontrá tranquilidad."
 status: "production"
 url: "https://taskue.io"
 stack: ["pwa", "javascript", "local-first"]
-order: 1
+order: 2
 featured: true
 ---
 

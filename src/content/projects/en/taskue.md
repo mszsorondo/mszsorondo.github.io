@@ -4,7 +4,7 @@ tagline: "Capture tasks, move through the queue, find calm."
 status: "production"
 url: "https://taskue.io"
 stack: ["pwa", "javascript", "local-first"]
-order: 1
+order: 2
 featured: true
 ---
 
