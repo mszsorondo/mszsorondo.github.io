@@ -1,6 +1,6 @@
 ---
 name: "Intuitiv AI"
-tagline: "AI consulting and implementation for businesses. Cofounded, profitable, multi-client."
+tagline: "AI consulting and implementation for businesses."
 status: "launched"
 url: "https://intuitiv-ai.com"
 stack: ["llm", "agents", "automation", "platforms", "training"]
