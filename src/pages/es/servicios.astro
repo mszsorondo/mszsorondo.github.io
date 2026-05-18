@@ -25,7 +25,7 @@ const faqItems = [
 <BaseLayout title="Trabajemos juntos — Marco Sánchez Sorondo" description={tr('services.pageLead')}>
   <section class="max-w-container mx-auto px-4 py-16">
     <SectionTitle eyebrow="Servicios" title={tr('services.pageTitle')} subtitle={tr('services.pageLead')} />
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-2 gap-6 mt-10">
       {services.map(s => (
         <ServiceCard
           title={s.data.title}

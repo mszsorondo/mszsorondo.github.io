@@ -16,16 +16,17 @@
     "contact": "Contact"
   },
   "home": {
-    "heroLine": "Research, building, and teaching in AI.",
+    "heroLine": "AI development, research, consulting, and training.",
     "heroSub": "Cofounder of Intuitiv AI. Generative AI researcher at Universidad Austral. Book a consultation, a class, or a training session.",
-    "pillarsLabel": "Three pillars",
+    "pillarsLabel": "Four pillars",
+    "pillarDevelopment": "Development",
     "pillarResearch": "Research",
-    "pillarBuilding": "Building",
-    "pillarTeaching": "Teaching & training",
+    "pillarConsulting": "Consulting",
+    "pillarTeaching": "Training",
     "featuredProjects": "Projects",
     "latestPosts": "Latest posts",
     "servicesPreview": "Services",
-    "orgsStrip": "Where I research, teach, and build"
+    "orgsStrip": "Where I research, teach, and develop"
   },
   "blog": {
     "readingTime": "min read",

@@ -1,22 +1,25 @@
 ---
-name: "OpuLens Vision Technologies"
-tagline: "Servicios y productos de IA multimodal aplicada."
-status: "wip"
-stack: ["llm", "multimodal", "computer-vision", "voice"]
+name: "OpuLens"
+tagline: "Plataforma de IA multimodal: percibe, interpreta y actúa sobre imágenes, video, audio y texto a escala."
+status: "production"
+url: "https://opulens.technology"
+stack: ["multimodal", "computer-vision", "llm", "voice", "edge"]
 order: 3
 featured: true
-draft: true
-subProjects:
-  - name: "health.opulens"
-    tagline: "Diagnóstico automático con estudios, agente conversacional para asistir médicos y pacientes, DTC pharma."
-  - name: "soundOs"
-    tagline: "OS por voz para operar todo hablando — por ejemplo, mientras manejás."
+draft: false
 ---
 
 ## Qué es
 
-OpuLens es una marca paraguas para productos y servicios de IA multimodal. Dos iniciativas activas: `health.opulens` (salud) y `soundOs` (voz).
+OpuLens entrega IA multimodal lista para empresas. Una sola plataforma unifica análisis visual, de audio y de texto que antes requería tres soluciones separadas, con baja latencia y privacidad de nivel enterprise.
 
-## Foco
+## Capacidades
 
-Aplicaciones de IA multimodal con énfasis en healthcare y experiencias de uso no visuales (manos ocupadas, ojos ocupados).
+- **Inteligencia visual**: detección de objetos y comprensión de escena en imágenes y video.
+- **Audio y texto**: monitoreo de redes sociales y procesamiento de streams.
+- **Razonamiento multimodal**: combina los tres canales en simultáneo, con alertas en tiempo real.
+- **Infraestructura**: 17 nodos edge en 6 continentes, AES-256, TLS 1.3, arquitectura zero-trust (SOC 2, HIPAA, GDPR).
+
+## Para quién
+
+Equipos de operaciones, análisis e ingeniería que necesitan procesar fuentes visuales, sonoras y textuales sin armar un stack de IA desde cero.

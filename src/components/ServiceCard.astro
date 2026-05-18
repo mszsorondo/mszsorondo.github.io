@@ -6,10 +6,15 @@ interface Props {
 }
 const { title, audience, includes } = Astro.props;
 ---
-<article class="border border-line p-6 flex flex-col">
-  <h3 class="font-display text-xl">{title}</h3>
-  <p class="mt-2 text-sm uppercase tracking-widest text-ink-mute">{audience}</p>
-  <ul class="mt-4 space-y-1 text-sm text-ink-soft flex-1">
-    {includes.map(i => <li>· {i}</li>)}
+<article class="border border-line p-6 md:p-8 flex flex-col h-full bg-paper">
+  <h3 class="font-display text-xl md:text-2xl leading-tight min-h-[3.5rem]">{title}</h3>
+  <p class="mt-3 text-sm text-ink-soft leading-relaxed min-h-[3.5rem]">{audience}</p>
+  <ul class="mt-6 pt-6 border-t border-line space-y-2 text-sm text-ink-soft flex-1">
+    {includes.map(i => (
+      <li class="flex gap-3">
+        <span class="text-ink-mute select-none" aria-hidden="true">—</span>
+        <span class="flex-1 leading-relaxed">{i}</span>
+      </li>
+    ))}
   </ul>
 </article>

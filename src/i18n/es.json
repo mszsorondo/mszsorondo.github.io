@@ -16,16 +16,17 @@
     "contact": "Contactar"
   },
   "home": {
-    "heroLine": "Investigación, construcción y enseñanza en IA.",
+    "heroLine": "Desarrollo, investigación, consultoría y capacitaciones de IA.",
     "heroSub": "Cofundador de Intuitiv AI. Investigador en IA generativa en Universidad Austral. Agendá una consultoría, una clase o una capacitación.",
-    "pillarsLabel": "Tres pilares",
+    "pillarsLabel": "Cuatro pilares",
+    "pillarDevelopment": "Desarrollo",
     "pillarResearch": "Investigación",
-    "pillarBuilding": "Construcción",
-    "pillarTeaching": "Enseñanza y capacitaciones",
+    "pillarConsulting": "Consultoría",
+    "pillarTeaching": "Capacitaciones",
     "featuredProjects": "Proyectos",
     "latestPosts": "Últimos del blog",
     "servicesPreview": "Servicios",
-    "orgsStrip": "Donde investigo, enseño y construyo"
+    "orgsStrip": "Donde investigo, enseño y desarrollo"
   },
   "blog": {
     "readingTime": "min de lectura",

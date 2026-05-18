@@ -22,14 +22,14 @@ const posts = (await getCollection('blog', (p) => p.id.startsWith('en/') && !p.d
 
 const services = (await getCollection('services', (s) => s.id.startsWith('en/')))
   .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 3);
+  .slice(0, 4);
 
 const readingMinutes = (content: string) =>
   Math.max(1, Math.round(content.split(/\s+/).length / 200));
 
 const stripLocale = (id: string) => id.replace(/^en\//, '');
 ---
-<BaseLayout title="Marco Sánchez Sorondo — AI research, building, and teaching" description={tr('home.heroSub')}>
+<BaseLayout title="Marco Sánchez Sorondo — AI development, research, consulting, and training" description={tr('home.heroSub')}>
   <Hero
     title={tr('home.heroLine')}
     lead={tr('home.heroSub')}
@@ -37,11 +37,12 @@ const stripLocale = (id: string) => id.replace(/^en\//, '');
     ctaSecondary={{ href: route(lang, 'blog'), label: tr('cta.readBlog') }}
   />
 
-  <section class="max-w-container mx-auto px-4 py-12 grid md:grid-cols-3 gap-8 border-t border-line">
+  <section class="max-w-container mx-auto px-4 py-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-line">
     {[
-      { label: tr('home.pillarResearch'), body: 'Applied research in LLMs, RL, GNNs, and scalable systems.' },
-      { label: tr('home.pillarBuilding'), body: 'Cofounder of Intuitiv AI (profitable AI consultancy). Products serving clients across industries.' },
-      { label: tr('home.pillarTeaching'), body: 'Lecturer at Universidad Austral and TA at UBA. Team training.' }
+      { label: tr('home.pillarDevelopment'), body: 'Platforms, LLM agents, and multimodal systems. I build at Intuitiv AI and OpuLens.' },
+      { label: tr('home.pillarResearch'), body: 'Generative AI, computer vision, and agents at Universidad Austral. Frontier work with real applications.' },
+      { label: tr('home.pillarConsulting'), body: 'Diagnosis, roadmap, and hands-on support for companies adopting AI.' },
+      { label: tr('home.pillarTeaching'), body: 'Lecturer at Universidad Austral, TA at UBA. In-house programs for technical and business teams.' }
     ].map(p => (
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-ink-mute">{p.label}</p>
@@ -88,7 +89,7 @@ const stripLocale = (id: string) => id.replace(/^en\//, '');
   {services.length > 0 && (
     <section class="max-w-container mx-auto px-4 py-16 border-t border-line">
       <SectionTitle title={tr('home.servicesPreview')} />
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-2 gap-6">
         {services.map(s => (
           <ServiceCard
             title={s.data.title}
