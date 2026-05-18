@@ -40,4 +40,4 @@ Hands-on training for teams: prompting, documentation, analysis, automation, and
 
 ## My role
 
-Cofounder and AI/platform engineer. I built and run `platform.intuitiv-ai.com`. End-to-end delivery: solution design, web/app engineering, LLM agents, backend infrastructure, client integration. Business development: client acquisition, sales, and delivery.
+Cofounder and AI/platform engineer. I built and run `platform.intuitiv-ai.com`. End-to-end delivery: solution design, web/app engineering, agents, backend infrastructure, client integration. Business development: client acquisition, sales, and delivery.

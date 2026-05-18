@@ -40,4 +40,4 @@ Capacitación práctica para equipos: prompting, documentación, análisis, auto
 
 ## Mi rol
 
-Cofundador e ingeniero de IA y plataforma. Construí y opero `platform.intuitiv-ai.com`. Delivery end-to-end: solution design, web/app engineering, agentes LLM, infraestructura backend, integración con clientes. Dirección comercial: adquisición de clientes, ventas y delivery.
+Cofundador e ingeniero de IA y plataforma. Construí y opero `platform.intuitiv-ai.com`. Delivery end-to-end: solution design, web/app engineering, agentes, infraestructura backend, integración con clientes. Dirección comercial: adquisición de clientes, ventas y delivery.
