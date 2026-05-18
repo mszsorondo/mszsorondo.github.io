@@ -12,7 +12,7 @@ const stripLocale = (id: string) => id.replace(/^es\//, '');
 <BaseLayout title="Proyectos — Marco Sánchez Sorondo">
   <section class="max-w-container mx-auto px-4 py-16">
     <SectionTitle eyebrow="Ventures" title="Proyectos" subtitle="Lo que construyo, solo o con equipos." />
-    <div class="grid md:grid-cols-2 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map(p => (
         <ProjectCard
           name={p.data.name}
