@@ -12,9 +12,17 @@ const routeMap = {
   services: { es: 'servicios', en: 'services' },
   blog: { es: 'blog', en: 'blog' },
   contact: { es: 'contacto', en: 'contact' },
+  apply: { es: 'aplicar', en: 'apply' },
+  thanks: { es: 'gracias', en: 'thanks' },
 } as const;
 
 export type RouteKey = keyof typeof routeMap;
+
+const slugToKey: Record<Lang, Record<string, RouteKey>> = { es: {}, en: {} };
+for (const [key, val] of Object.entries(routeMap) as [RouteKey, typeof routeMap[RouteKey]][]) {
+  slugToKey.es[val.es] = key;
+  slugToKey.en[val.en] = key;
+}
 
 export function getLangFromUrl(url: URL): Lang {
   const [, maybeLang] = url.pathname.split('/');
@@ -39,7 +47,21 @@ export function getAltUrl(url: URL, target: Lang): string {
   if (!hasPrefix) {
     return `/${target}/` + qh;
   }
-  return url.pathname.replace(new RegExp(`^/${current}`), `/${target}`) + qh;
+
+  const rest = url.pathname.replace(new RegExp(`^/${current}/?`), '');
+  const segments = rest.split('/').filter(Boolean);
+
+  if (segments.length === 0) {
+    return `/${target}/` + qh;
+  }
+
+  const firstSeg = segments[0];
+  const routeKey = slugToKey[current][firstSeg];
+  if (routeKey) {
+    segments[0] = routeMap[routeKey][target];
+  }
+
+  return `/${target}/${segments.join('/')}/` + qh;
 }
 
 export function localizedPath(lang: Lang, path: string): string {

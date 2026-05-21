@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+---
+<BaseLayout
+  title="Let's work together — Marco Sánchez Sorondo"
+  description="Application to build your AI idea or startup end-to-end with Marco Sánchez Sorondo."
+>
+  <section class="max-w-prose mx-auto px-4 py-16">
+    <SectionTitle
+      eyebrow="Application"
+      title="Let's work together"
+      subtitle="If you have an AI idea and want to turn it into a product, tell me the details and I'll get back to you within 48 hours."
+    />
+
+    <form
+      action="https://formspree.io/f/xgoqklop"
+      method="POST"
+      class="mt-12 space-y-8"
+    >
+      <input type="hidden" name="_next" value="https://mszsorondo.github.io/en/thanks/" />
+      <input type="hidden" name="_subject" value="New application — personal site" />
+
+      <div>
+        <label class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-2" for="name">Name *</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full border border-line p-3 bg-paper focus:border-ink outline-none transition-colors"
+        />
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-2" for="email">Email *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full border border-line p-3 bg-paper focus:border-ink outline-none transition-colors"
+        />
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-2" for="idea">Your idea or project *</label>
+        <textarea
+          id="idea"
+          name="idea"
+          rows="6"
+          required
+          placeholder="What you want to build, what problem it solves, current stage."
+          class="w-full border border-line p-3 bg-paper focus:border-ink outline-none transition-colors resize-y"
+        ></textarea>
+      </div>
+
+      <fieldset>
+        <legend class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-3">Estimated budget *</legend>
+        <div class="space-y-2">
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="radio" name="budget" value="< USD 5K" required />
+            <span>Less than USD 5K</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="radio" name="budget" value="USD 5K – 15K" />
+            <span>USD 5K – 15K</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="radio" name="budget" value="USD 15K – 50K" />
+            <span>USD 15K – 50K</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="radio" name="budget" value="USD 50K+" />
+            <span>USD 50K+</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-3">When do you want to start *</legend>
+        <div class="space-y-2">
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="radio" name="timeline" value="Now / next few weeks" required />
+            <span>Now or in the next few weeks</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="radio" name="timeline" value="Next 3 months" />
+            <span>Within the next 3 months</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="radio" name="timeline" value="3+ months / exploring" />
+            <span>More than 3 months or still exploring</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div>
+        <label class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-2" for="extra">Anything else?</label>
+        <textarea
+          id="extra"
+          name="extra"
+          rows="3"
+          placeholder="Team, context, reference links, anything else you want to add."
+          class="w-full border border-line p-3 bg-paper focus:border-ink outline-none transition-colors resize-y"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="bg-ink text-white px-8 py-4 text-xs uppercase tracking-[0.15em] font-semibold hover:opacity-90 transition-opacity"
+      >
+        Submit application →
+      </button>
+    </form>
+  </section>
+</BaseLayout>
