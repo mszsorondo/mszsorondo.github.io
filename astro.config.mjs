@@ -1,9 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import react from '@astrojs/react';
 
 export default defineConfig({
   site: 'https://mszsorondo.github.io',
@@ -14,8 +12,17 @@ export default defineConfig({
       prefixDefaultLocale: true,
     },
   },
-  vite: {
-    plugins: [tailwindcss()],
+  redirects: {
+    '/es/servicios': '/es/#que-hago',
+    '/es/proyectos': '/es/#que-construi',
+    '/es/trabajo': '/es/#trayectoria',
+    '/es/acerca': '/es/#trayectoria',
+    '/es/contacto': '/es/#trabajemos',
+    '/en/services': '/en/#what-i-do',
+    '/en/projects': '/en/#what-i-built',
+    '/en/work': '/en/#track-record',
+    '/en/about': '/en/#track-record',
+    '/en/contact': '/en/#work-with-me',
   },
   integrations: [
     mdx(),
@@ -25,7 +32,6 @@ export default defineConfig({
         locales: { es: 'es-AR', en: 'en-US' },
       },
     }),
-    react(),
   ],
   build: {
     format: 'directory',

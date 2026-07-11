@@ -1,6 +1,8 @@
 # mszsorondo.github.io
 
-Portfolio personal de Marco Sánchez Sorondo — bilingüe (ES/EN), con blog, proyectos, servicios agendables y posicionamiento de thought leadership en IA.
+Sitio personal de Marco Sánchez Sorondo — bilingüe (ES/EN), minimalista brutalista: una página por idioma, monospace, blanco y negro, un solo acento de color.
+
+Inspirado en lambdaclass.com, tinygrad.org y yann.lecun.com: el contenido es la interfaz, la credibilidad son los datos concretos, y la copy filtra clientes ("trabajo por proyecto, con presupuesto y plazos").
 
 ## Local dev
 
@@ -19,46 +21,36 @@ npm run preview
 ## Tests
 
 ```bash
-npm run test           # Playwright smoke tests
+npm run test           # Playwright smoke tests (levanta preview sobre dist/)
 ```
 
 ## Deploy
 
 Push a `main` → GitHub Actions → GitHub Pages → https://mszsorondo.github.io/
 
-**Setup inicial (una vez):** GitHub → Settings → Pages → Source: **GitHub Actions**.
-
 ## Stack
 
-- **Astro 6** (SSG) + **TypeScript**
-- **Tailwind v4** (CSS-first `@theme`)
-- **React islands** para interactividad (LanguageToggle, CalendlyEmbed, BlogSearch, CategoryFilter)
-- **Content Collections** con Zod para blog, proyectos, servicios, work timeline, publicaciones, testimonios
-- **Fuentes**: Satoshi (display, vía Fontshare CDN), Inter (body), Source Serif 4 (prosa de blog), JetBrains Mono (código)
-- **i18n nativo** con rutas `/es/` (default) y `/en/`
-- **RSS feeds** por idioma
-- **Deploy** vía GitHub Actions a GitHub Pages
+- **Astro 6** (SSG) + **TypeScript** — cero JavaScript en el cliente salvo el decode de contacto
+- **CSS plano** (`src/styles/global.css`, ~130 líneas) — sin framework
+- **JetBrains Mono** self-hosted vía @fontsource — única fuente
+- **Content Collections** con Zod solo para el blog
+- **i18n** con rutas `/es/` (default) y `/en/`, páginas espejadas a mano
+- **RSS** por idioma, sitemap, JSON-LD, hreflang, `llms.txt`
+- **Formspree** para el formulario de aplicación con filtros de presupuesto y plazo
 
 ## Estructura
 
 ```
 src/
-  content/         # markdown + JSON de blog, proyectos, work, services, publications, testimonials
-  content.config.ts  # schemas Zod
-  i18n/            # diccionarios + helpers
-  layouts/         # BaseLayout, ProjectLayout, BlogPostLayout
-  components/      # componentes .astro reutilizables
-    islands/       # componentes React hidratados en cliente
-  pages/           # rutas (espejo ES y EN)
-  styles/          # global.css, prose.css
-public/            # favicon, CV PDFs, imágenes
+  content/blog/      # posts markdown por idioma
+  content.config.ts  # schema Zod del blog
+  i18n/utils.ts      # detección de idioma + URL alternativa
+  layouts/           # BaseLayout (head/SEO), BlogPostLayout
+  lib/contact.ts     # datos de contacto (obfuscados en HTML con base64)
+  pages/
+    es/ en/          # index (one-pager), blog, aplicar/apply, gracias/thanks
+  styles/global.css  # todo el sistema de diseño
+public/llms.txt      # resumen del sitio para crawlers de LLMs
 ```
 
-Diseño completo en `docs/superpowers/specs/2026-04-20-portfolio-design.md`.
-Plan de implementación en `docs/superpowers/plans/2026-04-20-portfolio-implementation.md`.
-
-## Agregar contenido
-
-**Nuevo post del blog (ES):** crear `src/content/blog/es/YYYY-MM-DD-slug.md` con frontmatter (ver posts existentes).
-**Nuevo proyecto:** `src/content/projects/{es,en}/slug.md`.
-**Nueva entrada de timeline:** `src/content/work/{es,en}/NN-slug.md`.
+Las rutas viejas (`/es/servicios/`, `/es/proyectos/`, etc.) redirigen a anclas del one-pager vía `redirects` en `astro.config.mjs`.

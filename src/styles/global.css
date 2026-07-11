@@ -1,83 +1,134 @@
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap');
-@import "tailwindcss";
-
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/source-serif-4/400.css';
-@import '@fontsource/source-serif-4/600.css';
+/* One font, one column, black on white, one accent. */
 @import '@fontsource/jetbrains-mono/400.css';
-
-@theme {
-  --color-ink: #0a0a0a;
-  --color-ink-soft: #3a3a3a;
-  --color-ink-mute: #7a7a7a;
-  --color-paper: #ffffff;
-  --color-paper-warm: #faf9f6;
-  --color-line: #e5e5e5;
-  --color-accent: #0a0a0a;
-
-  --font-display: "Satoshi", "Inter", sans-serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-prose: "Source Serif 4", Georgia, serif;
-  --font-mono: "JetBrains Mono", Menlo, monospace;
-}
+@import '@fontsource/jetbrains-mono/700.css';
 
 :root {
-  --ink: #0a0a0a;
-  --ink-soft: #3a3a3a;
-  --ink-mute: #7a7a7a;
-  --paper: #ffffff;
-  --paper-warm: #faf9f6;
-  --line: #e5e5e5;
-  --accent: #0a0a0a;
-  --focus: #2563eb;
-
-  --font-display-var: "Satoshi", "Inter", sans-serif;
-  --font-body-var: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-prose-var: "Source Serif 4", Georgia, serif;
-  --font-mono-var: "JetBrains Mono", Menlo, monospace;
-
-  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
-  --s-5: 24px; --s-6: 32px; --s-7: 40px; --s-8: 56px;
-  --s-9: 64px; --s-10: 80px; --s-11: 96px; --s-12: 128px;
-
-  --container: 72rem;
-  --prose: 40rem;
+  --ink: #111;
+  --paper: #fff;
+  --mute: #666;
+  --accent: #d04040;
+  --link: #0645ad;
 }
 
-@utility max-w-container {
-  max-width: var(--container);
+* { box-sizing: border-box; }
+
+html {
+  font-family: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', 'Lucida Console', monospace;
 }
 
-@utility max-w-prose {
-  max-width: var(--prose);
+body {
+  margin: 0 auto;
+  padding: 2.5rem 1rem 4rem;
+  max-width: 80ch;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  word-wrap: break-word;
 }
 
-@layer base {
-  html {
-    font-family: var(--font-body-var);
-    color: var(--ink);
-    background: var(--paper);
-  }
-  body { margin: 0; line-height: 1.6; }
-  *:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-
-  h1, h2, h3, h4 {
-    font-family: var(--font-display-var);
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1.05;
-    margin: 0;
-  }
-  h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
-  h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
-  h3 { font-size: 1.5rem; }
-
-  a { color: inherit; text-decoration: none; }
-  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+h1 {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.3em;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+h2 {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 2.4rem 0 1rem;
 }
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  margin: 1.8rem 0 0.5rem;
+}
+
+p { margin: 0 0 1em; }
+
+a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { background: var(--link); color: var(--paper); }
+
+hr {
+  border: none;
+  height: 0.12rem;
+  background: transparent;
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  margin: 2.2rem 0;
+}
+
+ul, ol { padding-left: 1.4rem; margin: 0 0 1em; }
+li { margin-bottom: 0.4rem; }
+li > p { margin-bottom: 0.4rem; }
+
+dl { margin: 0 0 1em; }
+dt { font-weight: 700; }
+dd { margin: 0 0 1em; }
+
+.mute { color: var(--mute); }
+
+/* The one accent: the single link we want clicked. */
+.cta { color: var(--accent); font-weight: 700; }
+.cta:hover { background: var(--accent); color: var(--paper); }
+
+/* Compact fact rows (trayectoria, blog list) */
+.rows { list-style: none; padding: 0; }
+.rows li { margin-bottom: 0.6rem; }
+.rows .when { color: var(--mute); white-space: nowrap; }
+
+/* Forms: HTML defaults with a 1px border */
+label, legend { display: block; font-weight: 700; margin-bottom: 0.4rem; }
+input[type='text'], input[type='email'], textarea {
+  width: 100%;
+  padding: 0.6rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 0;
+}
+input:focus, textarea:focus { outline: 2px solid var(--ink); outline-offset: 0; }
+fieldset { border: 1px solid var(--ink); padding: 0.8rem 1rem; margin: 0 0 1em; }
+fieldset label { font-weight: 400; margin-bottom: 0.3rem; }
+form > div { margin-bottom: 1.2em; }
+button {
+  font: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--paper);
+  background: var(--ink);
+  border: none;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+}
+button:hover { background: var(--accent); }
+
+/* Blog prose */
+article code {
+  background: #f2f2f2;
+  padding: 0.1em 0.3em;
+  font-size: 0.95em;
+}
+article pre {
+  background: #f2f2f2;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 0 0 1em;
+}
+article pre code { background: none; padding: 0; }
+article blockquote {
+  margin: 0 0 1em;
+  padding-left: 1rem;
+  border-left: 3px solid var(--ink);
+  color: var(--mute);
+}
+article img { max-width: 100%; height: auto; }
+article table { border-collapse: collapse; width: 100%; margin: 0 0 1em; }
+article td, article th { border: 1px solid var(--ink); padding: 0.3rem 0.6rem; text-align: left; }

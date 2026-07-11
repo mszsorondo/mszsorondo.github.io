@@ -5,7 +5,7 @@ import type { APIContext } from 'astro';
 export async function GET(context: APIContext) {
   const posts = await getCollection('blog', (p) => p.id.startsWith('en/') && !p.data.draft);
   return rss({
-    title: 'Marco Sánchez Sorondo — Blog',
+    title: 'Marco Sánchez Sorondo - Blog',
     description: 'Notes on AI, development, research, consulting, and training.',
     site: context.site!,
     items: posts

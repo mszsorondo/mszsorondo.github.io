@@ -1,128 +1,181 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Hero from '../../components/Hero.astro';
-import SectionTitle from '../../components/SectionTitle.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
-import BlogCard from '../../components/BlogCard.astro';
-import ServiceCard from '../../components/ServiceCard.astro';
-import LogoStrip from '../../components/LogoStrip.astro';
-import ContactBlock from '../../components/ContactBlock.astro';
 import { getCollection } from 'astro:content';
-import { t, route, localizedPath } from '../../i18n/utils';
-
-const lang = 'en' as const;
-const tr = t(lang);
-
-const projects = (await getCollection('projects', (p) => p.id.startsWith('en/') && p.data.featured && !p.data.draft))
-  .sort((a, b) => a.data.order - b.data.order);
+import { contact } from '../../lib/contact';
 
 const posts = (await getCollection('blog', (p) => p.id.startsWith('en/') && !p.data.draft))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 3);
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const services = (await getCollection('services', (s) => s.id.startsWith('en/')))
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 4);
-
-const readingMinutes = (content: string) =>
-  Math.max(1, Math.round(content.split(/\s+/).length / 200));
-
-const stripLocale = (id: string) => id.replace(/^en\//, '');
+const mail64 = Buffer.from(contact.email).toString('base64');
+const tel64 = Buffer.from(contact.phoneTel).toString('base64');
+const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' });
 ---
-<BaseLayout title="Marco Sánchez Sorondo — AI development, research, consulting, and training" description={tr('home.heroSub')}>
-  <Hero
-    title={tr('home.heroLine')}
-    lead={tr('home.heroSub')}
-    ctaPrimary={{ href: route(lang, 'services'), label: tr('cta.schedule') }}
-    ctaSecondary={{ href: route(lang, 'blog'), label: tr('cta.readBlog') }}
-  />
+<BaseLayout
+  title="Marco Sánchez Sorondo"
+  description="I build complex software and AI systems end to end, and ship them to production fast."
+>
+  <header>
+    <h1>Marco Sánchez Sorondo</h1>
+    <p><strong>I build complex software and AI systems end to end, and ship them to production fast.</strong></p>
+    <p>
+      Cofounder of <a href="https://intuitiv-ai.com">Intuitiv AI</a>, an AI consulting and
+      development firm with clients across several industries. Researcher and professor of
+      generative AI and computer vision at Universidad Austral. Computer Science degree (UBA).
+    </p>
+    <p>
+      <a data-mail={mail64} href="#">email</a> ·
+      <a data-tel={tel64} data-tel-display={contact.phoneDisplay} href="#">phone</a>
+    </p>
+    <nav aria-label="Links">
+      <p>
+        <a href="/en/blog/">Blog</a> /
+        <a href={contact.github}>GitHub</a> /
+        <a href={contact.linkedin}>LinkedIn</a> /
+        <a href="/es/">ES</a>
+      </p>
+    </nav>
+  </header>
 
-  <section class="max-w-container mx-auto px-4 py-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-line">
-    {[
-      { label: tr('home.pillarDevelopment'), body: 'Platforms, agents, and multimodal systems. I build at Intuitiv AI and OpuLens.' },
-      { label: tr('home.pillarResearch'), body: 'Generative AI, computer vision, and agents at Universidad Austral. Frontier work with real applications.' },
-      { label: tr('home.pillarConsulting'), body: 'Diagnosis, audits, roadmap, implementation, and hands-on support for companies adopting AI.' },
-      { label: tr('home.pillarTeaching'), body: 'Lecturer at Universidad Austral and IAE Business School. In-house programs for technical and business teams.' }
-    ].map(p => (
-      <div>
-        <p class="text-xs uppercase tracking-[0.2em] text-ink-mute">{p.label}</p>
-        <p class="mt-2 text-ink-soft">{p.body}</p>
-      </div>
-    ))}
-  </section>
-
-  <section class="border-t border-line">
-    <div class="max-w-container mx-auto px-4 py-20 md:py-28 text-center">
-      <h2 class="font-display text-3xl md:text-5xl leading-tight max-w-3xl mx-auto">
-        Want to build your idea or startup and don't know how or where to start?
-      </h2>
-      <div class="mt-10">
-        <a href={route(lang, 'apply')} class="inline-block bg-ink text-white px-8 py-4 text-xs uppercase tracking-[0.15em] font-semibold hover:opacity-90 transition-opacity">
-          Let's work together →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  {projects.length > 0 && (
-    <section class="max-w-container mx-auto px-4 py-16 border-t border-line">
-      <SectionTitle title={tr('home.featuredProjects')} />
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map(p => (
-          <ProjectCard
-            name={p.data.name}
-            tagline={p.data.tagline}
-            status={p.data.status}
-            href={localizedPath(lang, `projects/${stripLocale(p.id)}`)}
-            stack={p.data.stack}
-          />
-        ))}
-      </div>
+  <main>
+    <hr />
+    <section id="what-i-do">
+      <h2>What I do</h2>
+      <h3>Development</h3>
+      <p>
+        I build platforms, agents, and multimodal systems end to end: design, implementation,
+        deployment, and observability. I do this today at Intuitiv AI, Clofi, and OpuLens; at
+        Peak Health I shipped medical agents with professional supervision to production.
+      </p>
+      <h3>Consulting</h3>
+      <p>
+        I audit your operation and your stack, tell you what's broken, which technology you're
+        missing, and how to implement it. Diagnosis, a 30/90/180-day roadmap, and hands-on
+        support through implementation. I also do async advisory for founders and teams who
+        need a second opinion before an expensive decision: build vs buy, hiring, vendors.
+      </p>
+      <h3>Research</h3>
+      <p>
+        I research generative AI, computer vision, and agents at Universidad Austral, with
+        applications in healthcare and media analysis. I take what works in the lab into
+        client projects.
+      </p>
+      <h3>Training</h3>
+      <p>
+        I teach your team how AI works and everything they can do with it: prompting, agents,
+        automations, and AI-assisted development, applied to their day-to-day work. The goal
+        is that each person automates the repetitive parts and multiplies their output. I
+        teach at Universidad Austral and IAE Business School; I adapt in-house programs to
+        each team's stack and level.
+      </p>
     </section>
-  )}
 
-  {posts.length > 0 && (
-    <section class="max-w-container mx-auto px-4 py-16 border-t border-line">
-      <SectionTitle title={tr('home.latestPosts')} />
-      <div>
-        {posts.map(p => (
-          <BlogCard
-            title={p.data.title}
-            description={p.data.description}
-            pubDate={p.data.pubDate}
-            category={p.data.category}
-            href={localizedPath(lang, `blog/${stripLocale(p.id)}`)}
-            readingMinutes={readingMinutes(p.body ?? '')}
-          />
-        ))}
-      </div>
+    <hr />
+    <section id="approach">
+      <h2>Approach</h2>
+      <p>
+        Most AI projects die between the demo and production. The demo takes a week. The system
+        that survives real users, dirty data, and model errors takes months, and that is the
+        work I do.
+      </p>
+      <p>
+        You pick the technology after you understand the problem. Many companies buy AI tools
+        with no prior diagnosis and pile up software nobody uses. Diagnosis first, stack second.
+      </p>
+      <p>
+        I work per project, with defined scope, budget, and deadlines. If you want loose
+        freelancer hours, I'm the wrong person.
+      </p>
     </section>
-  )}
 
-  {services.length > 0 && (
-    <section class="max-w-container mx-auto px-4 py-16 border-t border-line">
-      <SectionTitle title={tr('home.servicesPreview')} />
-      <div class="grid md:grid-cols-2 gap-6">
-        {services.map(s => (
-          <ServiceCard
-            title={s.data.title}
-            audience={s.data.audience}
-            includes={s.data.includes}
-          />
-        ))}
-      </div>
+    <hr />
+    <section id="what-i-built">
+      <h2>What I've built</h2>
+      <ul>
+        <li>
+          <strong><a href="https://intuitiv-ai.com">Intuitiv AI</a></strong>
+          <p>AI consulting and development firm I cofounded, with clients across several
+          industries. I built and operate platform.intuitiv-ai.com; I do solution design,
+          engineering, agents, and infrastructure.</p>
+        </li>
+        <li>
+          <strong><a href="https://clofi.com.ar">Clofi</a></strong>
+          <p>Training management platform for coaches, gyms, and studios: routines, nutrition,
+          progress tracking, messaging, and payments (MercadoPago, Stripe) in one place. I
+          built it end to end: web, iOS, and Android apps.</p>
+        </li>
+        <li>
+          <strong><a href="https://getpeakhealth.com">Peak Health</a></strong>
+          <p>Medical agents supervised by real professionals (doctor-in-the-loop) and the
+          backend of a healthcare platform under medical regulation. I designed and built the
+          agents and the end-to-end model integration.</p>
+        </li>
+        <li>
+          <strong><a href="https://opulens.technology">OpuLens</a></strong>
+          <p>Multimodal AI platform: visual, audio, and text analysis in one system, with 17
+          edge nodes across 6 continents and a zero-trust architecture.</p>
+        </li>
+        <li>
+          <strong><a href="https://taskue.io">Taskue</a></strong>
+          <p>A local-first, keyboard-driven to-do list. No accounts, no servers: your data
+          never leaves your device.</p>
+        </li>
+        <li>
+          <strong>MTSApy</strong>
+          <p>API that integrates the MTSA controller synthesizer with PyTorch and TensorFlow,
+          built at UBA's Software Engineering Lab.</p>
+        </li>
+      </ul>
     </section>
-  )}
 
-  <LogoStrip
-    label={tr('home.orgsStrip')}
-    orgs={[
-      { name: 'Universidad Austral' },
-      { name: 'UBA' },
-      { name: 'Intuitiv AI' },
-      { name: 'Peak Health' }
-    ]}
-  />
+    <hr />
+    <section id="track-record">
+      <h2>Track record</h2>
+      <ul class="rows">
+        <li><span class="when">2025-</span> Researcher and professor, generative AI &amp; computer vision - Universidad Austral</li>
+        <li><span class="when">2025-2026</span> AI engineer &amp; platform developer - Peak Health</li>
+        <li><span class="when">2025-</span> Cofounder, AI &amp; platform engineer - Intuitiv AI</li>
+        <li><span class="when">2024-</span> Independent consultant, technology &amp; AI</li>
+        <li><span class="when">2022-2025</span> Teaching assistant, Algorithms and Data Structures I - UBA</li>
+        <li><span class="when">2022-2023</span> Research intern, Software Engineering Lab (ICC) - UBA</li>
+      </ul>
+      <p>
+        1st place, Facebook Hack en Español 2022 (Meta). Sponsor &amp; finance chair of the
+        LXAI Workshop at NeurIPS 2023 and 2025.
+      </p>
+    </section>
 
-  <ContactBlock bordered />
+    {posts.length > 0 && (
+      <>
+        <hr />
+        <section id="blog">
+          <h2>Blog</h2>
+          <ul class="rows">
+            {posts.map((p) => (
+              <li>
+                <span class="when">{fmt.format(p.data.pubDate)}</span>{' '}
+                <a href={`/en/blog/${p.id.replace(/^en\//, '')}/`}>{p.data.title}</a>
+              </li>
+            ))}
+          </ul>
+          <p><a href="/en/rss.xml">RSS</a></p>
+        </section>
+      </>
+    )}
+
+    <hr />
+    <section id="work-with-me">
+      <h2>Work with me</h2>
+      <p>
+        Do you have an idea, a startup, or a company that wants to adopt AI? Tell me what you
+        need. I work per project, with a defined budget and deadlines.
+      </p>
+      <p>
+        <a class="cta" href="/en/apply/">→ Apply here</a>
+      </p>
+      <p>
+        Or write to me: <a data-mail={mail64} href="#">email</a> ·
+        <a data-tel={tel64} data-tel-display={contact.phoneDisplay} href="#">phone</a>
+      </p>
+    </section>
+  </main>
 </BaseLayout>

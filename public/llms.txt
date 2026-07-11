@@ -1,0 +1,34 @@
+# Marco Sánchez Sorondo
+
+I build complex software and AI systems end to end, and ship them to production fast.
+
+Cofounder of Intuitiv AI (https://intuitiv-ai.com), an AI consulting and development firm
+with clients across several industries. Researcher and professor of generative AI and
+computer vision at Universidad Austral. Computer Science degree from Universidad de Buenos
+Aires.
+
+## What I do
+- Development: platforms, agents, and multimodal systems end to end.
+- Consulting: audits, diagnosis, 30/90/180-day roadmaps, implementation support.
+- Research: generative AI, computer vision, agents; applications in healthcare and media analysis.
+- Training: I teach teams how AI works and how to automate their day-to-day work
+  (Universidad Austral, IAE, in-house programs).
+
+## What I've built
+- Intuitiv AI (https://intuitiv-ai.com): AI consulting and development firm I cofounded.
+- Clofi (https://clofi.com.ar): training management platform for coaches, gyms, and studios
+  (routines, nutrition, progress tracking, payments). Built end to end: web, iOS, and Android.
+- Peak Health (https://getpeakhealth.com): shipped doctor-in-the-loop medical agents to production.
+- OpuLens (https://opulens.technology): multimodal AI platform, 17 edge nodes on 6 continents.
+- Taskue (https://taskue.io): local-first, keyboard-driven to-do list.
+- MTSApy: MTSA + PyTorch/TensorFlow integration, built at UBA's Software Engineering Lab.
+
+## How I work
+Per project, with defined scope, budget, and deadlines.
+
+## Contact
+- Site (ES): https://mszsorondo.github.io/es/
+- Site (EN): https://mszsorondo.github.io/en/
+- Apply: https://mszsorondo.github.io/en/apply/
+- GitHub: https://github.com/mszsorondo
+- LinkedIn: https://linkedin.com/in/marco-sanchez-sorondo

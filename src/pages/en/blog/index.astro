@@ -1,49 +1,32 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import SectionTitle from '../../../components/SectionTitle.astro';
-import BlogSearch from '../../../components/islands/BlogSearch.tsx';
-import CategoryFilter from '../../../components/islands/CategoryFilter.tsx';
 import { getCollection } from 'astro:content';
-import { t } from '../../../i18n/utils';
-
-const lang = 'en' as const;
-const tr = t(lang);
 
 const posts = (await getCollection('blog', (p) => p.id.startsWith('en/') && !p.data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const categories = Array.from(new Set(posts.map(p => p.data.category)));
-
-const stripLocale = (id: string) => id.replace(/^en\//, '');
-
-const searchPosts = posts.map(p => ({
-  slug: stripLocale(p.id),
-  title: p.data.title,
-  description: p.data.description,
-  category: p.data.category,
-  tags: p.data.tags,
-}));
+const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' });
 ---
-<BaseLayout title="Blog — Marco Sánchez Sorondo">
-  <section class="max-w-prose mx-auto px-4 py-16">
-    <SectionTitle eyebrow="Blog" title="Writings" subtitle="Notes on AI, development, research, consulting, and training." />
+<BaseLayout title="Blog - Marco Sánchez Sorondo" description="Notes on AI, development, research, consulting, and training.">
+  <header>
+    <p><a href="/en/">Marco Sánchez Sorondo</a> / blog / <a href="/es/blog/">ES</a></p>
+    <h1>Blog</h1>
+  </header>
+  <main>
+    <hr />
     {posts.length > 0 ? (
-      <>
-        <CategoryFilter
-          client:load
-          categories={categories}
-          allLabel={tr('blog.allCategories')}
-          basePath="/en/blog/"
-        />
-        <BlogSearch
-          client:load
-          posts={searchPosts}
-          placeholder={tr('blog.searchPlaceholder')}
-          hrefPrefix="/en/blog"
-        />
-      </>
+      <ul class="rows">
+        {posts.map((p) => (
+          <li>
+            <span class="when">{fmt.format(p.data.pubDate)}</span>{' '}
+            <a href={`/en/blog/${p.id.replace(/^en\//, '')}/`}>{p.data.title}</a>
+            <p class="mute">{p.data.description}</p>
+          </li>
+        ))}
+      </ul>
     ) : (
-      <p class="text-ink-mute">First posts coming soon.</p>
+      <p class="mute">First posts coming soon.</p>
     )}
-  </section>
+    <p><a href="/en/rss.xml">RSS</a></p>
+  </main>
 </BaseLayout>

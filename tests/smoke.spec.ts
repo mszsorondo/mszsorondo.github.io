@@ -8,29 +8,48 @@ test('root redirects to /es/', async ({ page }) => {
   });
 });
 
-test('home ES renders hero and CTAs', async ({ page }) => {
+test('home ES renders thesis and sections', async ({ page }) => {
   await page.goto('/es/');
-  await expect(page.locator('h1').first()).toContainText(/Investigación/i);
-  await expect(page.getByRole('link', { name: /Agendar/i }).first()).toBeVisible();
+  await expect(page.locator('h1')).toContainText(/Marco Sánchez Sorondo/i);
+  await expect(page.getByText(/los pongo en producción/i).first()).toBeVisible();
+  for (const heading of ['Qué hago', 'Approach', 'Qué construí', 'Trayectoria', 'Trabajemos juntos']) {
+    await expect(page.getByRole('heading', { name: heading })).toBeVisible();
+  }
+  await expect(page.getByRole('link', { name: /Aplicá acá/i })).toBeVisible();
 });
 
-test('blog post renders in Spanish', async ({ page }) => {
-  await page.goto('/es/blog/2026-04-20-bienvenida/');
-  await expect(page.locator('article h1')).toBeVisible();
-  await expect(page.locator('article h1')).toContainText(/primer post/i);
+test('home EN renders thesis and apply link', async ({ page }) => {
+  await page.goto('/en/');
+  await expect(page.getByText(/ship them to production fast/i).first()).toBeVisible();
+  await expect(page.getByRole('link', { name: /Apply here/i })).toBeVisible();
 });
 
 test('language toggle switches to EN', async ({ page }) => {
   await page.goto('/es/');
-  await page.getByRole('link', { name: 'Switch to EN' }).click();
+  await page.getByRole('link', { name: 'EN', exact: true }).click();
   await expect(page).toHaveURL(/\/en\/?$/);
-  await expect(page.locator('h1').first()).toContainText(/Research/i);
 });
 
-test('projects page lists all four featured projects', async ({ page }) => {
-  await page.goto('/es/proyectos/');
-  await expect(page.getByText('Taskue').first()).toBeVisible();
-  await expect(page.getByText('Intuitiv AI').first()).toBeVisible();
-  await expect(page.getByText('OpuLens').first()).toBeVisible();
-  await expect(page.getByText('Arnium').first()).toBeVisible();
+test('home lists built projects with links', async ({ page }) => {
+  await page.goto('/es/');
+  for (const name of ['Intuitiv AI', 'Clofi', 'OpuLens', 'Taskue', 'Peak Health']) {
+    await expect(page.getByRole('link', { name }).first()).toBeVisible();
+  }
+});
+
+test('blog post renders in Spanish', async ({ page }) => {
+  await page.goto('/es/blog/2026-04-20-bienvenida/');
+  await expect(page.locator('article h1')).toContainText(/primer post/i);
+});
+
+test('apply form has qualifying filters', async ({ page }) => {
+  await page.goto('/es/aplicar/');
+  await expect(page.locator('form[action*="formspree"]')).toBeVisible();
+  await expect(page.getByText('Presupuesto estimado *')).toBeVisible();
+  await expect(page.getByText('Cuándo querés arrancar *')).toBeVisible();
+});
+
+test('old routes redirect to home anchors', async ({ page }) => {
+  await page.goto('/es/servicios/');
+  await page.waitForURL(/\/es\/#que-hago$/, { timeout: 5000 });
 });

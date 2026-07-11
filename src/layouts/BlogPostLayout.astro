@@ -1,8 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import ContactBlock from '../components/ContactBlock.astro';
-import '../styles/prose.css';
-import { getLangFromUrl, t } from '../i18n/utils';
+import { getLangFromUrl } from '../i18n/utils';
 
 interface Props {
   frontmatter: {
@@ -15,8 +13,7 @@ interface Props {
 }
 const { frontmatter, readingMinutes } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const tr = t(lang);
-const fmt = new Intl.DateTimeFormat(lang === 'es' ? 'es-AR' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const fmt = new Intl.DateTimeFormat(lang === 'es' ? 'es-AR' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -31,15 +28,21 @@ const articleSchema = {
 };
 ---
 <BaseLayout title={frontmatter.title} description={frontmatter.description} jsonLd={articleSchema}>
-  <article class="max-w-prose mx-auto px-4 py-16">
-    <header class="mb-10">
-      <p class="text-xs uppercase tracking-[0.2em] text-ink-mute">{frontmatter.category} · {readingMinutes} {tr('blog.readingTime')} · <time datetime={frontmatter.pubDate.toISOString()}>{fmt.format(frontmatter.pubDate)}</time></p>
-      <h1 class="font-display mt-3">{frontmatter.title}</h1>
-      <p class="mt-4 text-lg text-ink-soft">{frontmatter.description}</p>
-    </header>
-    <div class="prose">
+  <header>
+    <p>
+      <a href={`/${lang}/`}>Marco Sánchez Sorondo</a> /
+      <a href={`/${lang}/blog/`}>blog</a>
+    </p>
+  </header>
+  <main>
+    <article>
+      <h1>{frontmatter.title}</h1>
+      <p class="mute">
+        <time datetime={frontmatter.pubDate.toISOString()}>{fmt.format(frontmatter.pubDate)}</time>
+        · {frontmatter.category} · {readingMinutes} min
+      </p>
+      <hr />
       <slot />
-    </div>
-  </article>
-  <ContactBlock bordered />
+    </article>
+  </main>
 </BaseLayout>

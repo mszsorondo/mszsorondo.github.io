@@ -1,63 +1,22 @@
-# Pendientes antes del launch
+# Pendientes de contenido
 
-Items que requieren tu input manual. Cada uno tiene el "dónde" exacto.
+Items que requieren tu input manual, tras el rediseño brutalista (2026-07).
 
-## Alta prioridad
+## Copy con números
 
-### 1. Foto profesional
-Reemplazá `public/placeholder-photo.svg` por una foto real:
-- Guardala como `public/marco.jpg` (o `.webp`).
-- Actualizá las referencias a `/placeholder-photo.svg` en:
-  - `src/components/Hero.astro` (default del prop `photo`)
-  - `src/pages/es/acerca.astro` y `src/pages/en/about.astro`
-- Recomendado: cuadrada, ≥800×800, fondo neutro.
+El estilo Lambda vive de las cifras. Cuando puedas, reemplazá afirmaciones cualitativas por números en `src/pages/es/index.astro` y `src/pages/en/index.astro`:
 
-### 2. Verificar contacto
-En `src/lib/contact.ts` está centralizado:
-- `phoneDisplay: '+54 9 11 6199-7276'` — verificar que sea correcto
-- `phoneTel: '+5491161997276'` — versión sin formato para `tel:`
-- `email: 'mssorondom00@gmail.com'` — verificar
-- `linkedin`, `github` — verificar handles
+- Intuitiv AI: cantidad de clientes, industrias, o facturación si querés mostrarla.
+- Peak Health: volumen de consultas o usuarios que pasan por los agentes.
+- Capacitaciones: cantidad de alumnos/equipos entrenados.
 
-Email y teléfono ya están **obfuscados** con base64 + decode JS. No aparecen en el HTML estático → bots de scraping no los ven (solo los ven después de que el navegador ejecuta JS, que la mayoría de los spam bots no hacen). Spam mitigado pero no eliminado completamente — para los pocos que se cuelan, los filtros de Gmail hacen el resto.
+## Blog
 
-## Media prioridad
+Los dos posts actuales son de arranque. Con 5+ posts reales la sección Blog del one-pager gana peso. El post "Por qué elegí Astro" menciona Calendly y páginas de proyectos que ya no existen; actualizalo o despublicalo (`draft: true`).
 
-### 3. Otras iniciativas tuyas
-Mencionaste que ibas a contarme más iniciativas personales. Si querés sumarlas como proyectos:
-- Crear `src/content/projects/es/<slug>.md` + `src/content/projects/en/<slug>.md` siguiendo el patrón de los 4 existentes.
-- Campo `order` determina el orden en la grilla. Si querés que aparezcan en la home, `featured: true`.
+## Futuras iteraciones
 
-### 4. Testimonios (si los tenés)
-La sección aparece en `/servicios` solo si hay testimonios cargados. Crear:
-- `src/content/testimonials/es/<slug>.json` con `{quote, author, role, company, avatar?, tags}`
-- Schema en `src/content.config.ts`.
-
-### 5. OG image profesional
-`public/og-default.svg` ya existe (versión mínima con tu nombre). Si querés algo más diseñado (foto + posicionamiento + tu marca), reemplazá el archivo. LinkedIn y X aceptan SVG, pero algunos parsers prefieren PNG — si querés versión PNG, exportá `og-default.png` 1200×630 y cambiá la referencia en `src/layouts/BaseLayout.astro`.
-
-## Deploy (setup único)
-
-### 6. Crear el repo en GitHub y pushear
-```bash
-# En GitHub: crear repo público "mszsorondo.github.io" (vacío, sin README/gitignore)
-cd ~/Escritorio/personal/mszsorondo.github.io
-git remote add origin git@github.com:mszsorondo/mszsorondo.github.io.git
-git push -u origin main
-```
-
-### 7. Activar GitHub Pages
-- GitHub → Settings → Pages → **Source: GitHub Actions**
-- Primer push dispara el workflow; 1-2 min después el sitio está live en `https://mszsorondo.github.io/`.
-
-## Baja prioridad / futuras iteraciones
-
-- **Newsletter**: removido por ahora. Cuando tengas 5-10 posts y quieras crecer audiencia, sumamos Buttondown/ConvertKit/beehiiv.
-- **Analytics**: Plausible o Umami (privacy-friendly), opcional.
-- **Lighthouse CI**: workflow de quality gates (v1.1).
-- **Self-host Satoshi**: hoy viene de Fontshare CDN. Descargar woff2 a `public/fonts/` si querés zero dependencias externas.
-- **Dark mode**: toda la paleta está en CSS vars, se switchea con un `[data-theme="dark"]`.
-
----
-
-Cualquiera de estos lo hacemos cuando me avises.
+- **OG image**: `public/og-default.svg` sigue siendo la versión mínima; podés regenerarla en el nuevo estilo mono/blanco y negro (PNG 1200×630 para parsers estrictos).
+- **Analytics**: Plausible o Umami, opcional.
+- **Dark mode**: la paleta son 4 variables CSS en `global.css`; un `@media (prefers-color-scheme: dark)` alcanza.
+- **Contenido eliminado**: las descripciones largas de proyectos, servicios, timeline y testimonios viven en git (`git show b32375c^:src/content/...`) si necesitás recuperar algo.

@@ -1,117 +1,71 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionTitle from '../../components/SectionTitle.astro';
 ---
 <BaseLayout
-  title="Trabajemos juntos — Marco Sánchez Sorondo"
+  title="Trabajemos juntos - Marco Sánchez Sorondo"
   description="Aplicación para construir tu idea o startup de IA end-to-end con Marco Sánchez Sorondo."
 >
-  <section class="max-w-prose mx-auto px-4 py-16">
-    <SectionTitle
-      eyebrow="Aplicación"
-      title="Trabajemos juntos"
-      subtitle="Si tenés una idea de IA y querés llevarla a producto, contame los detalles y te respondo en 48hs."
-    />
-
-    <form
-      action="https://formspree.io/f/xgoqklop"
-      method="POST"
-      class="mt-12 space-y-8"
-    >
+  <header>
+    <p><a href="/es/">Marco Sánchez Sorondo</a> / aplicar / <a href="/en/apply/">EN</a></p>
+    <h1>Trabajemos juntos</h1>
+    <p>
+      Contame qué querés construir. Trabajo por proyecto, con alcance, presupuesto y plazos
+      definidos. Si buscás horas sueltas de un freelancer, no soy la persona.
+    </p>
+  </header>
+  <main>
+    <hr />
+    <form action="https://formspree.io/f/xgoqklop" method="POST">
       <input type="hidden" name="_next" value="https://mszsorondo.github.io/es/gracias/" />
-      <input type="hidden" name="_subject" value="Nueva aplicación — sitio personal" />
+      <input type="hidden" name="_subject" value="Nueva aplicación - sitio personal" />
 
       <div>
-        <label class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-2" for="name">Nombre *</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          required
-          class="w-full border border-line p-3 bg-paper focus:border-ink outline-none transition-colors"
-        />
+        <label for="name">Nombre *</label>
+        <input type="text" id="name" name="name" required />
       </div>
 
       <div>
-        <label class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-2" for="email">Email *</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          class="w-full border border-line p-3 bg-paper focus:border-ink outline-none transition-colors"
-        />
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required />
       </div>
 
       <div>
-        <label class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-2" for="idea">Tu idea o proyecto *</label>
+        <label for="idea">Tu idea o proyecto *</label>
         <textarea
           id="idea"
           name="idea"
           rows="6"
           required
           placeholder="Qué querés construir, qué problema resuelve, en qué etapa estás."
-          class="w-full border border-line p-3 bg-paper focus:border-ink outline-none transition-colors resize-y"
         ></textarea>
       </div>
 
       <fieldset>
-        <legend class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-3">Presupuesto estimado *</legend>
-        <div class="space-y-2">
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="radio" name="budget" value="< USD 5K" required />
-            <span>Menos de USD 5K</span>
-          </label>
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="radio" name="budget" value="USD 5K – 15K" />
-            <span>USD 5K – 15K</span>
-          </label>
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="radio" name="budget" value="USD 15K – 50K" />
-            <span>USD 15K – 50K</span>
-          </label>
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="radio" name="budget" value="USD 50K+" />
-            <span>USD 50K+</span>
-          </label>
-        </div>
+        <legend>Presupuesto estimado *</legend>
+        <label><input type="radio" name="budget" value="< USD 5K" required /> Menos de USD 5K</label>
+        <label><input type="radio" name="budget" value="USD 5K - 15K" /> USD 5K - 15K</label>
+        <label><input type="radio" name="budget" value="USD 15K - 50K" /> USD 15K - 50K</label>
+        <label><input type="radio" name="budget" value="USD 50K+" /> USD 50K+</label>
       </fieldset>
 
       <fieldset>
-        <legend class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-3">Cuándo querés arrancar *</legend>
-        <div class="space-y-2">
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="radio" name="timeline" value="Ya / próximas semanas" required />
-            <span>Ya o en las próximas semanas</span>
-          </label>
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="radio" name="timeline" value="Próximos 3 meses" />
-            <span>Próximos 3 meses</span>
-          </label>
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="radio" name="timeline" value="Más de 3 meses / explorando" />
-            <span>Más de 3 meses o sigo explorando</span>
-          </label>
-        </div>
+        <legend>Cuándo querés arrancar *</legend>
+        <label><input type="radio" name="timeline" value="Ya / próximas semanas" required /> Ya o en las próximas semanas</label>
+        <label><input type="radio" name="timeline" value="Próximos 3 meses" /> Próximos 3 meses</label>
+        <label><input type="radio" name="timeline" value="Más de 3 meses / explorando" /> Más de 3 meses o sigo explorando</label>
       </fieldset>
 
       <div>
-        <label class="block text-xs uppercase tracking-[0.2em] text-ink-mute mb-2" for="extra">¿Algo más?</label>
+        <label for="extra">¿Algo más?</label>
         <textarea
           id="extra"
           name="extra"
           rows="3"
           placeholder="Equipo, contexto, links de referencia, lo que quieras agregar."
-          class="w-full border border-line p-3 bg-paper focus:border-ink outline-none transition-colors resize-y"
         ></textarea>
       </div>
 
-      <button
-        type="submit"
-        class="bg-ink text-white px-8 py-4 text-xs uppercase tracking-[0.15em] font-semibold hover:opacity-90 transition-opacity"
-      >
-        Enviar aplicación →
-      </button>
+      <button type="submit">Enviar aplicación →</button>
     </form>
-  </section>
+  </main>
 </BaseLayout>
