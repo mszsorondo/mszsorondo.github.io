@@ -1,6 +1,6 @@
 # Marco Sánchez Sorondo
 
-I build complex software and AI systems end to end, and ship them to production fast.
+I build complex, reliable software and AI systems end to end, and ship them to production fast.
 
 Cofounder of Intuitiv AI (https://intuitiv-ai.com), an AI consulting and development firm
 with clients across several industries. Researcher and professor of generative AI and
