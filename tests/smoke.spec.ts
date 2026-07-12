@@ -47,6 +47,7 @@ test('apply form has qualifying filters', async ({ page }) => {
   await expect(page.locator('form[action*="formspree"]')).toBeVisible();
   await expect(page.getByText('Presupuesto estimado *')).toBeVisible();
   await expect(page.getByText('Cuándo querés arrancar *')).toBeVisible();
+  await expect(page.getByText('En cuánto tiempo querés terminar el proyecto *')).toBeVisible();
 });
 
 test('old routes redirect to home anchors', async ({ page }) => {
