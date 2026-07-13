@@ -8,8 +8,9 @@ computer vision at Universidad Austral. Computer Science degree from Universidad
 Aires.
 
 ## What I do
-- Development: platforms, agents, and multimodal systems end to end.
-- Consulting: audits, diagnosis, 30/90/180-day roadmaps, implementation support.
+- Development & Consulting: platforms, AI agents, and end-to-end systems; intensive process
+  assessments, planning, and tool adoption. Sectors: healthcare, agriculture, finance,
+  retail, law and accounting firms.
 - Research: generative AI, computer vision, agents; applications in healthcare and media analysis.
 - Training: I teach teams how AI works and how to automate their day-to-day work
   (Universidad Austral, IAE, in-house programs).
